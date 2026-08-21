@@ -18,4 +18,4 @@ To build a portaPLUTO, you will need the following:
 
 The main software package is built around tezuka and maia-sdr, though rtl_433 and dump1090 are exposed in applications. The software consists of an FPGA image, a Zynq firmware image, and a Pi Pico firmware image: these vary from the tezuka defaults, so ensure you flash both.
 
-Importantly, *the system must be powered before you plug the Pico in to a computer! Otherwise you may damage the touchscreen controller*.
+Importantly, *the system must be powered before you plug the PlutoSky or Pico in to a computer!*.
