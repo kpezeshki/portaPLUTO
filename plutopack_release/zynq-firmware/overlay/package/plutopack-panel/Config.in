@@ -1,0 +1,16 @@
+config BR2_PACKAGE_PLUTOPACK_PANEL
+	bool "plutopack-panel"
+	help
+	  PlutoSky front-panel daemon + demo/debug suite. Polls the Pico over the
+	  Zynq<->Pico SPI bus (mode 1 / CPHA=1) and renders to the ILI9341
+	  framebuffer (/dev/fb0). Installs to /usr/bin:
+	    plutopack-panel  live Pico status GUI (started by S99 at boot)
+	    pp-launcher      front-panel app switcher (boot app)
+	    pp-demo          launcher: sdr|tonegen|spectrum|gui|live|status
+	    pp-gui           animated status GUI (fake sensors)
+	    pp-sdr           "Waterfall": maia-sdr waterfall + LO tuner
+	    pp-tonegen       AD9361 CW tone generator (TX, via DDS)
+	    pp-spectrum      swept FFT spectrum analyzer (maia + LO sweep)
+	    pp-status/pp-probe/pp-fbnoise/pp-fbrebind  headless debug tools
+	    disp_speed       swap devicetree to test 250k/1/2/5/10 MHz display SPI
+	  See /usr/share/plutopack/README on target.

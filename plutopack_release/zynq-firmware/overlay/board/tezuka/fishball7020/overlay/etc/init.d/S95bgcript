@@ -1,0 +1,10 @@
+#!/bin/sh
+# PlutoPack override of the common (tezuka/DATV) S95bgcript.
+#
+# Upstream S95bgcript launches DATV/QO-100 helpers — LNB 13/18 V switching
+# (lnb_config / switch_lnb), PTT (watchconsoletx), DATV-Easy ensm handling
+# (watchdatveasy, which force-powers-down TX_LO on RX and can fight our TX apps),
+# auto-LNB-by-frequency (watchconsolefreq) and a ttyACM0/MQTT console API
+# (api_controller). None of these are PlutoPack features, and their continuous
+# poll loops waste idle power. This no-op replaces them for the fishball7020 build.
+exit 0

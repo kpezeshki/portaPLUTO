@@ -1,0 +1,8 @@
+#!/bin/sh
+# PlutoPack: runs last in rcS. The front panel (started early at S30) shows a
+# splash until this marker appears, then switches to the interactive launcher.
+case "$1" in
+    start) : > /tmp/pp_boot_done ;;
+    stop)  rm -f /tmp/pp_boot_done ;;
+esac
+exit 0

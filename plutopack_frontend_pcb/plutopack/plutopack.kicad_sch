@@ -1,0 +1,1968 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "56056f02-0d12-4351-8217-6118cc2eb35a")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:GND"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(no_connect
+		(at 92.71 121.92)
+		(uuid "3b1983d4-5a17-4ac3-99cb-e931fb02a1ac")
+	)
+	(wire
+		(pts
+			(xy 92.71 78.74) (xy 109.22 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00a4e338-057f-4c9e-b81d-69864b5fc199")
+	)
+	(wire
+		(pts
+			(xy 92.71 99.06) (xy 109.22 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06b2a067-fb3d-48d0-9483-12efe35e1bf1")
+	)
+	(wire
+		(pts
+			(xy 92.71 118.11) (xy 109.22 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b83f905-d049-40a6-842d-92f697524a47")
+	)
+	(wire
+		(pts
+			(xy 92.71 49.53) (xy 109.22 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10415f1c-1b75-4bd4-9b9c-4edf1160add0")
+	)
+	(wire
+		(pts
+			(xy 92.71 52.07) (xy 109.22 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "27dd3093-65cb-4c7a-badb-15776b1aea8f")
+	)
+	(wire
+		(pts
+			(xy 92.71 45.72) (xy 109.22 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a3376e9-7382-4211-b46f-591040404402")
+	)
+	(wire
+		(pts
+			(xy 92.71 57.15) (xy 109.22 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cb6e618-8794-4ec4-86e7-389ba5337909")
+	)
+	(wire
+		(pts
+			(xy 92.71 68.58) (xy 109.22 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cca8214-3094-4010-a767-5b8121cced3a")
+	)
+	(wire
+		(pts
+			(xy 92.71 54.61) (xy 109.22 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d85f911-1fbd-4819-852d-905c3fd2969a")
+	)
+	(wire
+		(pts
+			(xy 92.71 83.82) (xy 109.22 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4436507f-2bf4-4b5f-bc43-50d766155885")
+	)
+	(wire
+		(pts
+			(xy 92.71 71.12) (xy 109.22 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a076498-482d-498e-b02e-18f1ac702be5")
+	)
+	(wire
+		(pts
+			(xy 92.71 43.18) (xy 109.22 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fbd8879-cdc7-4d6c-b421-98fac08b359f")
+	)
+	(wire
+		(pts
+			(xy 45.72 53.34) (xy 58.42 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "634c6a75-bc8e-4763-abb7-42587e048c24")
+	)
+	(wire
+		(pts
+			(xy 45.72 58.42) (xy 58.42 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68399e18-93c6-486b-b620-2f76617e2511")
+	)
+	(wire
+		(pts
+			(xy 45.72 24.13) (xy 109.22 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "700820be-70bd-45ea-98da-39eda368cae9")
+	)
+	(wire
+		(pts
+			(xy 45.72 48.26) (xy 58.42 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77158eb6-8184-4e06-b39e-faeceb76395a")
+	)
+	(wire
+		(pts
+			(xy 92.71 96.52) (xy 109.22 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a6833f0-d7a5-4fbd-a2be-502ff1b682aa")
+	)
+	(wire
+		(pts
+			(xy 92.71 93.98) (xy 109.22 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "892d60f4-46ad-4b09-8896-6d635ff8a910")
+	)
+	(wire
+		(pts
+			(xy 92.71 81.28) (xy 109.22 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9410161d-8f7d-4934-91a8-bbf44d986e43")
+	)
+	(wire
+		(pts
+			(xy 45.72 31.75) (xy 109.22 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "983b9764-77de-48a9-953c-01d11e4500f9")
+	)
+	(wire
+		(pts
+			(xy 92.71 111.76) (xy 109.22 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f7a84b8-a8ea-4bf6-a7de-83c576279c10")
+	)
+	(wire
+		(pts
+			(xy 92.71 115.57) (xy 109.22 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1e76c64-b3e9-4cf5-a361-655cb07d2ec4")
+	)
+	(wire
+		(pts
+			(xy 92.71 90.17) (xy 109.22 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8c62f8a-ec08-46c0-8854-d812ad5a37fc")
+	)
+	(wire
+		(pts
+			(xy 92.71 73.66) (xy 109.22 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2c64485-d5c9-4ab2-a99d-e081fbfa80c4")
+	)
+	(wire
+		(pts
+			(xy 45.72 55.88) (xy 58.42 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b32120c7-4a54-4ad3-a681-f848b758d4ee")
+	)
+	(wire
+		(pts
+			(xy 92.71 87.63) (xy 109.22 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b661e3f4-935a-4df3-b6e6-8d51c031fe9d")
+	)
+	(wire
+		(pts
+			(xy 45.72 26.67) (xy 109.22 26.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c638bfef-202f-41ed-b32c-71e2ae7ab0ad")
+	)
+	(wire
+		(pts
+			(xy 45.72 29.21) (xy 109.22 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc5cea18-21b1-458c-9373-bba4cf9c8db7")
+	)
+	(wire
+		(pts
+			(xy 45.72 34.29) (xy 109.22 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e001deb2-f687-4847-bbcf-5650d036ba6b")
+	)
+	(wire
+		(pts
+			(xy 45.72 50.8) (xy 58.42 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e14417b0-31bf-4914-b224-e130e40955d8")
+	)
+	(wire
+		(pts
+			(xy 45.72 45.72) (xy 58.42 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e37a125e-3f3d-451e-8dca-3fa56fd5921b")
+	)
+	(wire
+		(pts
+			(xy 45.72 43.18) (xy 58.42 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea875646-60f6-4e41-b075-7e9896f51439")
+	)
+	(wire
+		(pts
+			(xy 92.71 76.2) (xy 109.22 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcc2717c-864a-4ac2-9f05-a6aafa1883ae")
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 254 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2dd96357-748d-4f8b-adfe-a8f8d803e679")
+		(property "Reference" "H4"
+			(at 256.54 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 256.54 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad"
+			(at 254 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 254 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "975f5125-1291-4728-b112-4cb7346ad0c8")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "H4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 229.87 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "35077a73-5690-4670-86a3-34ea4bec9697")
+		(property "Reference" "#PWR0107"
+			(at 229.87 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 229.87 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 229.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 229.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 229.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50622f68-e273-44f6-b743-97cc65d7f246")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "#PWR0107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 177.8 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3b817147-786a-4e8b-87ce-df191dfb44be")
+		(property "Reference" "#PWR091"
+			(at 177.8 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 177.8 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 177.8 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d461a7a8-62f8-4259-a7ef-4dd7c152afaf")
+		)
+		(instances
+			(project ""
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "#PWR091")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 177.8 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4c647209-cb24-45ce-bed0-d5d080acd8be")
+		(property "Reference" "H1"
+			(at 180.34 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 180.34 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad"
+			(at 177.8 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 177.8 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "57013a87-7ee7-4766-a386-7df9457d6665")
+		)
+		(instances
+			(project ""
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 229.87 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "62f493bd-1eed-4629-a1fc-8f9e50509a6a")
+		(property "Reference" "H3"
+			(at 232.41 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 232.41 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad"
+			(at 229.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 229.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 229.87 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d43b4bc0-1045-4dc8-82cf-ffa47fa1390b")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 254 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "69c9b715-ff23-4fa3-b117-d82c7dded206")
+		(property "Reference" "#PWR0108"
+			(at 254 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 254 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 254 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 254 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 254 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e01e8ea-8ad8-4a92-af4d-57a4957a172d")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "#PWR0108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 205.74 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e374803a-b9ad-479e-85e9-e23a196decb9")
+		(property "Reference" "#PWR0106"
+			(at 205.74 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 205.74 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 205.74 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 205.74 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 205.74 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26d6f4a9-a04e-4b16-9960-ca23135cdf7a")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "#PWR0106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 205.74 40.64 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "eca3a60c-36ef-4e4d-b2d2-b58b70bd852e")
+		(property "Reference" "H2"
+			(at 208.28 38.0999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole_Pad"
+			(at 208.28 40.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 205.74 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0e7f0b02-cd3d-457b-9f1f-07f00af5ca5c")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 109.22 109.22)
+		(size 24.13 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "03d2557a-61d2-4f7d-a1ab-c3349330fefa")
+		(property "Sheetname" "power_management"
+			(at 109.22 108.5084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power_management.kicad_sch"
+			(at 109.22 125.0446 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BATT_VDIV" output
+			(at 109.22 111.76 180)
+			(uuid "bdfc4fc3-7230-4ce4-8928-1fa3b4eb2bce")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SCL" input
+			(at 109.22 115.57 180)
+			(uuid "8c13ebb0-063c-4391-be52-77cd10efe90c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SDA" bidirectional
+			(at 109.22 118.11 180)
+			(uuid "3f5d4728-8d24-4ca6-ab2a-1e12f694c894")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 58.42 40.64)
+		(size 34.29 83.82)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "425047c9-4f1c-4c2e-b641-63d8504c9b81")
+		(property "Sheetname" "MCU"
+			(at 58.42 39.9284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "MCU.kicad_sch"
+			(at 58.42 125.0446 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "GPIO0" bidirectional
+			(at 92.71 43.18 0)
+			(uuid "5fea610d-ee61-4c11-babb-97991336d338")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO1" bidirectional
+			(at 92.71 45.72 0)
+			(uuid "1d355dc9-4f5b-4be1-a50c-20e8362c62b8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO7" bidirectional
+			(at 92.71 78.74 0)
+			(uuid "f0fbdd62-f4d6-4aa3-a5bc-ff9bb27eecd8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO8" bidirectional
+			(at 92.71 76.2 0)
+			(uuid "99399b65-2926-49c3-a431-76543f4102db")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO9" bidirectional
+			(at 92.71 81.28 0)
+			(uuid "7c9c6cfb-c2da-4e39-83c9-e963e59d479a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO10" bidirectional
+			(at 92.71 83.82 0)
+			(uuid "84898adc-6908-47ea-b76e-73a5c05d9170")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO11" bidirectional
+			(at 92.71 87.63 0)
+			(uuid "8c103dfa-2a1a-4782-bfe6-2fb70b7d10ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO12" bidirectional
+			(at 92.71 90.17 0)
+			(uuid "dd61cb4d-2f53-4463-a697-fb75a9faf1fd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO13" bidirectional
+			(at 92.71 93.98 0)
+			(uuid "ba2f2347-ce53-42e1-b15e-083169e87a14")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO14" bidirectional
+			(at 92.71 96.52 0)
+			(uuid "d751b47d-290e-4ea1-8b5a-97ffd8cca232")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO15" bidirectional
+			(at 92.71 99.06 0)
+			(uuid "f33b3edd-acd7-4a10-80f2-ca2d20da755c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO16_SDA_MOSI" bidirectional
+			(at 58.42 43.18 180)
+			(uuid "d46f264d-0c31-453d-9f3d-ef6b9b9859d6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO17_SCL_CS" bidirectional
+			(at 58.42 45.72 180)
+			(uuid "1834205a-7441-42af-87c5-52f525eadfe0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO18_SCLK" bidirectional
+			(at 58.42 48.26 180)
+			(uuid "8980a604-b2d1-4efd-870c-c9404c722889")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO19_MISO" bidirectional
+			(at 58.42 50.8 180)
+			(uuid "5bddccd4-4b9d-4355-a8ef-4d531884c68d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO20" bidirectional
+			(at 58.42 53.34 180)
+			(uuid "1d79f1bd-fe1a-486a-8b06-3723577767f1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO21" bidirectional
+			(at 58.42 55.88 180)
+			(uuid "997823d5-bfe0-4a0f-8d74-75af282a3eaf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RPI_GPIO26_ADC0" bidirectional
+			(at 92.71 111.76 0)
+			(uuid "342f4073-2667-4a31-b53a-033cfef48bae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO2_I2C1_SDA" bidirectional
+			(at 92.71 118.11 0)
+			(uuid "c39f6e99-9cb8-4ca6-bec4-9e0810537edc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO3_I2C1_SCL" bidirectional
+			(at 92.71 115.57 0)
+			(uuid "0f0dd8b0-e870-47af-b52f-53129f051d56")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "VBUS_OUT" output
+			(at 92.71 121.92 0)
+			(uuid "5dbb39cf-88d6-41ce-a009-de4e770fd0a0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO22" bidirectional
+			(at 58.42 58.42 180)
+			(uuid "0ce8d9aa-163b-4e23-b94b-cc6ae9e78607")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "TSC2007_X+" input
+			(at 92.71 49.53 0)
+			(uuid "7fdeb267-fec5-4a2d-ac29-736ebb993a24")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "TSC2007_X-" input
+			(at 92.71 52.07 0)
+			(uuid "ce4d2432-dbb5-4981-8db1-4f762a097884")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "TSC2007_Y+" input
+			(at 92.71 54.61 0)
+			(uuid "2a602ae3-d73f-444a-ae38-e6e63446a88d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "TSC2007_Y-" input
+			(at 92.71 57.15 0)
+			(uuid "0c5ce720-7daa-4635-bbf5-ed07dd74a329")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO6" bidirectional
+			(at 92.71 71.12 0)
+			(uuid "4b076e6a-3b87-4786-ac43-0969be9c0f8d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO4" bidirectional
+			(at 92.71 73.66 0)
+			(uuid "a976429c-0271-47b5-81b0-6513e746abe7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "GPIO5" bidirectional
+			(at 92.71 68.58 0)
+			(uuid "2ed1d178-a1d3-41cf-be55-45259211e2ca")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 109.22 66.04)
+		(size 24.13 38.1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "6f0fcd29-be8c-44ee-b598-4aa7c89f110b")
+		(property "Sheetname" "USER_IO"
+			(at 109.22 65.3284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "untitled.kicad_sch"
+			(at 109.22 104.7246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "BTN_BK" output
+			(at 109.22 83.82 180)
+			(uuid "70191390-271a-4267-93da-e7ecf0e76b04")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_CTR" output
+			(at 109.22 78.74 180)
+			(uuid "70fc6107-81d0-4bfc-a12e-dc994163c699")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_DWN" output
+			(at 109.22 71.12 180)
+			(uuid "2cc1674f-f307-4175-838c-2db4f1e3b9ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_LFT" output
+			(at 109.22 73.66 180)
+			(uuid "dd0bbefa-79a1-4ae3-93fd-7719e5a30368")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_RT" output
+			(at 109.22 76.2 180)
+			(uuid "458cb365-6814-4473-871c-479f759077fe")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_SEL" output
+			(at 109.22 81.28 180)
+			(uuid "61e6c851-1837-438f-aa87-629530cf4975")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "BTN_UP" output
+			(at 109.22 68.58 180)
+			(uuid "f7effea5-4793-4850-8ffd-c27581e64e81")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ENCODER_A" output
+			(at 109.22 87.63 180)
+			(uuid "4df98737-feff-479d-8f3a-87f17dcb9f50")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ENCODER_B" output
+			(at 109.22 90.17 180)
+			(uuid "56ea59b5-29f3-4d85-bef4-0640d9ae5b67")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO_1" output
+			(at 109.22 93.98 180)
+			(uuid "425b6ac9-fda1-415a-92bd-84c78dd3a4a6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO_2" output
+			(at 109.22 96.52 180)
+			(uuid "85545854-86d8-4f48-8cd8-e0e255bb9471")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "GPIO_3" bidirectional
+			(at 109.22 99.06 180)
+			(uuid "0ea00292-abb6-42a1-a7fd-82f533764f66")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 109.22 21.59)
+		(size 24.13 38.1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "82d9444a-d32c-4a21-a12d-6310c799af1f")
+		(property "Sheetname" "display"
+			(at 109.22 20.8784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "display.kicad_sch"
+			(at 109.22 60.2746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "LCD_CS" input
+			(at 109.22 45.72 180)
+			(uuid "f540b752-238d-4312-9c70-75f7b8b35bcf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_RD" input
+			(at 109.22 34.29 180)
+			(uuid "857e46bb-6a15-4587-a7d8-56dfbc94080b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_RS" input
+			(at 109.22 29.21 180)
+			(uuid "8b87cedd-b014-4bf9-8186-ab61115a6cae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_RST" input
+			(at 109.22 43.18 180)
+			(uuid "9db87993-968b-4140-b622-e8ae77e3e6e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_WR" input
+			(at 109.22 31.75 180)
+			(uuid "2f8985f0-c6a1-4923-937e-602ce52d3fbd")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_X+" output
+			(at 109.22 49.53 180)
+			(uuid "9be4cde1-8a0a-4302-86f3-87b8e1bbdff7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_X-" output
+			(at 109.22 52.07 180)
+			(uuid "73f97131-f37e-423a-b649-889ef6b37110")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_Y+" output
+			(at 109.22 54.61 180)
+			(uuid "864263aa-7248-4018-8842-09d60a2ed90d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LCD_Y-" output
+			(at 109.22 57.15 180)
+			(uuid "0e2cf423-a287-408a-b556-c7eca3b71343")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SDO" input
+			(at 109.22 24.13 180)
+			(uuid "dd55de85-e74e-4a6b-a40e-8f95610940e6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SDI" input
+			(at 109.22 26.67 180)
+			(uuid "f5c53759-f3c5-4024-99e8-4889f7a007f2")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 19.05 21.59)
+		(size 26.67 59.69)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "88b8b895-ab35-48b1-a39d-94024da6642a")
+		(property "Sheetname" "plutosky_gpio_interface"
+			(at 19.05 20.8784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "plutosky_gpio_interface.kicad_sch"
+			(at 11.176 82.804 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "ZYNQ_3V3_GPIO0" bidirectional
+			(at 45.72 24.13 0)
+			(uuid "260f4448-17be-4f93-9541-eb7924d6ce22")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_GPIO1" bidirectional
+			(at 45.72 26.67 0)
+			(uuid "61a66e6e-824a-4490-9684-9d1b06e41b10")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_GPIO2" bidirectional
+			(at 45.72 29.21 0)
+			(uuid "f7ee3697-45fd-4d88-8359-a61def8156fa")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_GPIO3" bidirectional
+			(at 45.72 31.75 0)
+			(uuid "a8d13aa8-2b35-48f6-8e9b-3a2c503e3b6f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO0" bidirectional
+			(at 45.72 34.29 0)
+			(uuid "c48cfe24-1f89-437a-8ef9-f4d943ad4889")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO1" bidirectional
+			(at 45.72 58.42 0)
+			(uuid "b3e98ce5-f2c2-4ca1-88f0-c05b411306bf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO2" bidirectional
+			(at 45.72 55.88 0)
+			(uuid "9dec6cc0-e0c8-4ae6-8e26-209dcc507150")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO3" bidirectional
+			(at 45.72 53.34 0)
+			(uuid "e3cf0ec3-53d7-4d3b-915f-9db7fed3e71c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO4" bidirectional
+			(at 45.72 50.8 0)
+			(uuid "4b152d02-9cfa-416f-bc19-6e2b5e0a68e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO5" bidirectional
+			(at 45.72 48.26 0)
+			(uuid "7b4ec70d-f1d5-4415-8f81-e931962baa32")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO6" bidirectional
+			(at 45.72 45.72 0)
+			(uuid "0acc5959-5f67-421d-8fff-ae6ddc25f14d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "ZYNQ_3V3_LS_GPIO7" bidirectional
+			(at 45.72 43.18 0)
+			(uuid "efbdc86c-6a0e-4249-8f8e-72ef50f1fe8f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

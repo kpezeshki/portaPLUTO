@@ -1,0 +1,51 @@
+#!/bin/sh
+# PlutoPack override of the common overlay_maia S60maia-httpd.
+#
+# On PlutoPack the front-panel launcher owns maia-httpd: it is started only while
+# the WATERFALL app is open and stopped otherwise (maia's spectrometer FFT is a
+# real power draw). So we do NOT auto-start it at boot — that also keeps it off the
+# boot critical path and lets the panel come up first. rcS calls us with "start"
+# (boot) which is a deliberate no-op; the launcher uses "on"/"off".
+#
+# The maia binary ships xz-compressed (~2 MB); it is decompressed in place on the
+# first "on" (first WATERFALL open per boot), not at boot.
+
+wait_for_iio() {
+    retries=20
+    while [ "$retries" -gt 0 ]; do
+        find /sys/bus/iio/devices -name name -exec grep -ql "^ad9361-phy$" {} + 2>/dev/null && return 0
+        retries=$((retries - 1))
+        sleep 1
+    done
+    return 1
+}
+
+maia_start() {
+    printf "Starting maia-httpd: "
+    if [ -f /usr/bin/maia-httpd.xz ]; then
+        xz -d /usr/bin/maia-httpd.xz
+    fi
+    if ! wait_for_iio; then
+        echo "FAIL (ad9361-phy IIO device not found)"
+        return 1
+    fi
+    cd /root || exit
+    start-stop-daemon -S -b -q -m -p /var/run/maia-httpd.pid -x /usr/bin/maia-httpd -- --listen 0.0.0.0:80 --ssl-cert /mnt/jffs2/maia-httpd.crt --ssl-key /mnt/jffs2/maia-httpd.key --ca-cert /mnt/jffs2/maia-sdr-ca.crt
+    cd - > /dev/null || exit
+    echo "OK"
+}
+
+maia_stop() {
+    printf "Stopping maia-httpd: "
+    if start-stop-daemon -K -q -p /var/run/maia-httpd.pid 2>/dev/null; then echo "OK"; else echo "(not running)"; fi
+}
+
+case "$1" in
+    start)      : ;;                 # boot: on-demand only, do nothing
+
+    on)         maia_start ;;
+    off|stop)   maia_stop ;;
+    restart)    maia_stop; maia_start ;;
+    *)          echo "Usage: $0 {on|off|start|stop|restart}"; exit 1 ;;
+esac
+exit $?

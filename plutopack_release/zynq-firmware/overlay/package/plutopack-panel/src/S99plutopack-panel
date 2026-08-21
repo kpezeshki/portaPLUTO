@@ -1,0 +1,24 @@
+#!/bin/sh
+# PlutoSky front-panel daemon. The spi-gpio bus number is dynamic; override the
+# device as the first arg if the default is wrong (see: ls /sys/class/spidev).
+# fbtft owns spi1 (no spidev), so the ONLY /dev/spidev* is the spi-gpio Pico bus.
+DEV="${PLUTOPACK_PANEL_SPIDEV:-$(ls /dev/spidev* 2>/dev/null | head -1)}"
+
+# Enable AD9361 RX quadrature + DC-offset tracking calibrations. The device tree
+# turns none of these on, so RX otherwise has bad I/Q imbalance (image spurs) and
+# a large DC offset. Do it globally at boot so the maia apps (waterfall/spectrum/
+# SNA) benefit too; the libiio apps also re-assert it on open.
+pp_ad9361_cal(){
+  for d in /sys/bus/iio/devices/iio:device*; do
+    [ "$(cat "$d/name" 2>/dev/null)" = "ad9361-phy" ] || continue
+    echo 1 > "$d/in_voltage_quadrature_tracking_en"   2>/dev/null
+    echo 1 > "$d/in_voltage_rf_dc_offset_tracking_en" 2>/dev/null
+    echo 1 > "$d/in_voltage_bb_dc_offset_tracking_en" 2>/dev/null
+  done
+}
+case "$1" in
+  start)   pp_ad9361_cal; echo "Starting app picker"; /usr/bin/pp-launcher "$DEV" /dev/fb0 & ;;
+  stop)    kill "$(pidof pp-launcher)" 2>/dev/null ;;
+  restart) "$0" stop; sleep 1; "$0" start ;;
+  *) echo "Usage: $0 {start|stop|restart}"; exit 1 ;;
+esac

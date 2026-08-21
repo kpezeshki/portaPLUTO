@@ -1,0 +1,15 @@
+#!/bin/sh
+# Launch a PlutoPack demo, stopping any current fb writer first.
+# usage: pp-demo <launcher|sdr|tonegen|spectrum|gui|live|status> [fbdev] [spidev]
+FB=${2:-/dev/fb0}; SPI=${3:-/dev/spidev2.0}
+pkill -f '/usr/bin/pp-' 2>/dev/null; pkill plutopack-panel 2>/dev/null; sleep 1
+case "$1" in
+  launcher)  exec pp-launcher "$SPI" "$FB" ;;
+  gui)       exec pp-gui "$FB" ;;
+  tune|lo|sdr|waterfall) exec pp-sdr "$SPI" "$FB" ;;
+  tonegen)   exec pp-tonegen "$SPI" "$FB" ;;
+  spectrum)  exec pp-spectrum "$SPI" "$FB" ;;
+  live)      exec plutopack-panel "$SPI" "$FB" ;;
+  status)    exec pp-status "$SPI" ;;
+  *) echo "usage: pp-demo <launcher|sdr|tonegen|spectrum|gui|live|status> [fbdev] [spidev]"; exit 1 ;;
+esac

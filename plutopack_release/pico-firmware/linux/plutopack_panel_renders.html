@@ -1,0 +1,132 @@
+<title>PlutoPack panel renders</title>
+<style>
+  :root{
+    --ground:#0b0d12; --panel:#12161e; --panel-2:#161b26; --line:#232a38;
+    --accent:#369eff; --text:#e7ebf3; --dim:#8a93a6; --dim-2:#5c6577;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0}
+  main{
+    background:
+      radial-gradient(1200px 500px at 50% -10%, #141a26 0%, transparent 60%),
+      var(--ground);
+    color:var(--text); font-family:var(--sans);
+    line-height:1.55; min-height:100vh;
+    padding:clamp(1.5rem,4vw,4rem) 1.25rem 4rem;
+  }
+  .masthead,.gallery,footer{max-width:900px;margin-inline:auto}
+  .eyebrow{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 1rem;
+  }
+  h1{
+    font-family:var(--mono); font-weight:600; letter-spacing:-.01em;
+    font-size:clamp(2rem,5.5vw,3.4rem); line-height:1.05; margin:0;
+    text-wrap:balance;
+  }
+  .lede{
+    font-size:clamp(1rem,1.6vw,1.18rem); color:#c3cad8; max-width:60ch;
+    margin:1.1rem 0 2rem;
+  }
+  .flow{
+    display:flex; flex-wrap:wrap; align-items:stretch; gap:.6rem;
+    font-family:var(--mono); margin-bottom:.5rem;
+  }
+  .node{
+    display:flex; flex-direction:column; gap:.2rem;
+    background:var(--panel); border:1px solid var(--line); border-radius:8px;
+    padding:.55rem .8rem; font-size:.86rem; font-weight:600;
+  }
+  .node small{font-weight:400; font-size:.68rem; color:var(--dim); letter-spacing:.02em}
+  .arrow{display:flex; align-items:center; color:var(--dim-2); font-size:.8rem}
+
+  .gallery{display:flex; flex-direction:column; gap:1.5rem; margin-top:2.5rem}
+  .card{
+    margin:0; display:flex; flex-wrap:wrap; gap:1.25rem 1.5rem; align-items:center;
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:1.15rem; transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:#33405a; transform:translateY(-2px)}
+  .bezel{
+    background:linear-gradient(#05070a,#04050700); background-color:#05070a;
+    border:1px solid #1c2230; border-radius:12px;
+    padding:12px; box-shadow:inset 0 0 0 2px #0a0d13, 0 10px 24px -14px #000;
+    flex:0 0 auto;
+  }
+  .bezel img{
+    display:block; width:480px; max-width:100%; height:auto; aspect-ratio:4/3;
+    image-rendering:pixelated; border-radius:3px;
+  }
+  figcaption{flex:1 1 240px; min-width:0}
+  figcaption h3{
+    font-family:var(--mono); font-size:1.05rem; margin:0 0 .5rem; font-weight:600;
+  }
+  figcaption p{margin:0; color:#c3cad8; font-size:.95rem}
+  figcaption p :where(code){font-family:var(--mono)}
+  footer{
+    margin-top:2.75rem; padding-top:1.5rem; border-top:1px solid var(--line);
+    color:var(--dim); font-size:.9rem;
+  }
+  footer code{font-family:var(--mono); color:#c3cad8}
+  footer strong{color:var(--text)}
+  @media (prefers-reduced-motion:reduce){.card{transition:none}}
+  @media (max-width:560px){.bezel img{width:100%}}
+</style>
+<main>
+  <header class="masthead">
+    <p class="eyebrow">PlutoPack · front-panel display bring-up</p>
+    <h1>The serial demo, on the&nbsp;panel</h1>
+    <p class="lede">The same gauge, encoder, button and touch readout the Pico prints over USB serial &mdash; now rendered on the 320&times;240 ILI9341 front panel, refreshed live from Linux on the PlutoSky.</p>
+    <div class="flow">
+      <span class="node">Pico<small>sensors + UI</small></span>
+      <span class="arrow">&rarr; SPI &rarr;</span>
+      <span class="node">Zynq / Linux<small>polls status frame</small></span>
+      <span class="arrow">&rarr; fbtft &rarr;</span>
+      <span class="node">/dev/fb0<small>ILI9341 320&times;240</small></span>
+    </div>
+  </header>
+
+  <section class="gallery">
+      <figure class="card">
+        <div class="bezel"><img alt="Idle — on battery — 320x240 render" src="data:image/png;base64,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"></div>
+        <figcaption>
+          <h3>Idle — on battery</h3>
+          <p>Nominal state the moment after boot. Gauge shows 74% / 3712 mV / −142 mA (discharging, shown amber). Encoder at 12, no buttons, touch idle. SEQ counter in the title bar increments every SPI poll, proving the link is live.</p>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <div class="bezel"><img alt="Live input — 320x240 render" src="data:image/png;base64,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"></div>
+        <figcaption>
+          <h3>Live input</h3>
+          <p>SW4 and SW7 held (highlighted blue), encoder spun to −37, charger attached: green CHG badge, +305 mA, 88%. This is the whole UI reacting to the Pico's event queue in real time.</p>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <div class="bezel"><img alt="Touch active — 320x240 render" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADwBAMAAACDA6BYAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAeUExURRgcKTGd/4uRpAgMEBAUIDHSnObq9v/SOSkwQf///2xklGAAAAABYktHRAnx2aXsAAAAB3RJTUUH6gcZAAECEy8GLAAABadJREFUeNrt3Vlu2zAQAFDB6Ed/DfQABiP0APEFaoFVLlDfwOAJAvi3nz12OcNtJFFLrIWUPZMqojbreUjKTiozRcHBkT6OGLbU2hLfr3P8iwPR4YQDQLJfMbQbA92ir9IwDxuKyPrHQgj9T5wOel4cTgXOhZ3nADyc4Ks4CdBpmMA1AucB6Np563wdte8Pfh9bmFHLmDgDM6aDwWYDxGolwIPO3gGy2axiUhoANp6QP+w470IjmhkURdHNYEJgaIPiZIyxNtgPdNVHRKGvLFLFpBfr6QTlWC9OBwzSU88G2vTdZcULyWWGdKUj7TTN+l4hsgdycCSNY+aRP/CceTCQgaljF8AtLrePncYCv8nV49dDp/nFQAbmBBRCT6WZk2UhqxLK+metcgEgPIx7yAoftjTr3Gl7gVUJXwLnkiwLW9JrlwDCw4iSngy5pTttP1DgBE/NJtAumwkeeY6PACFj5iHDcy/lRCAk3O7olj1wVg0HIFRpJZpAOOtoFevKNNm2KXTLZhLlkhmUIpLBKW3QHSHJ8hptUD7SBvWz8t1LkuXK9OZy7V48Dlw3XuFCzcBnB159/MFtv12BgU8EpC4vba1n4H6BJiynKW2sZ+CugbSh9ZUZuGdgo6ER1OwGyMC8gaaQxSvJ9sDj8egLED+eBvg7vDdc9c1C5sDL0QIvlua9ewWuGbsEdkQMfG7ghMsMA2cBxYoxAXjp6lrAcr3sVcsAr/Piz3MDTWHwMvPSQFHuEuhvfjLvGmyZgU8EnBAMtEC5xM/FDJwN/PLRk2MZYJK3W18BrhwMZCADGZg9sFZKSnXzcxdK1rfowR+fUt4/5cf9Htbp5dWAAAGKmatxIODAiN+d+T50qnlAnUNkKZwblNKloQwCxwHvGkexywN11So96Sq+qdoCoRwB6mrF9N119boq1uVPmFbOIGBIBuv6NpxBqFSbwY9QXgUYqlZJ1wYBSNtjUmBtqldPN9+LsapJj274dHV+0CpeG7hy7BPo7piN3XyZBRBCjB21MVBU5t7VCm9exftX8YZ3vJ+1EpGjNgaGm4tlo4rpDchZAPHm4iyBwnw8AFUINPN8gKVFYtuDLJo5tsscgEJ89ajUlxkGMnAXwOw/Opl1MJCBqYOBDEwduwDqt7dncX5/exfCTbisN6TmGaCmvVEglHUJv1L7msD3N5wQKCCDqXUO6KoUEoYuDXwXZjl10Aw2gGcNzCGF/cCM2iD0Yqjms52y68VZBwMZmDoA2B2N6xz7IXHLlROA3/+14u+WKxnIQAY+J1CpDhBvDus+WHelvY+svaffcWzP1on2CVRdIB4TPW0XGKs4svbv4GO2V+4TGKvifzGgXjENGFeTDa8A7KnNnk4yZSWFz+/F+QOjDTp6RZnQ9L+3fCu1wZyAPWeY0MpfEagwJr/UjbxWDR0eAU7pJNkDd/B2i4EMZOBTAXP65VHWwUAGpg4GMjB1MJCBqWMXwAfu3dwozpvdZPv4rbkMZGAuQPiQkf80iv9UyvoxOvgBBdK/ZLAVsPckbvgID6zKkv41jeyA7oNFHjjvTy1sAMw5g1m2Qf/RLPtxrfyAiYKBDGQgAxk4EYije8lQsH/QwM8ZOAZ0mDYsaF340T/MwCCNEWrMkDBh9BpJx71QZNCLWtl91gLW4eR0hBoE1jc/eo0ZP0Q1jzNau89Ps3yZBGzCPPDaBOIJbfYcxmXVAWOj18CeIfnKfv95WxzohychVexGqIHMuCpUdr3fRsaFgfxhFmsDvLQHl5wEvLr5tZtBAqRZClUYsue3KemFpj3OzWAP0LclAmyjzRr3vdk+Qw7ntsFr6DgxIAw+ZKdQ7cq0M0XX017sgLXbXsqeeBy4bHwJ2LzMXEP/YOAEYPulrg1m4BgwVTDw6YGTf4GZZTCQganDAVP/l+HofyZmHQxkYOrIHvgfnBpjSdpL1N0AAAAASUVORK5CYII="></div>
+        <figcaption>
+          <h3>Touch active</h3>
+          <p>TSC2007 pen-down: X/Y/Z coordinates read out and a live crosshair plotted in the mini-map (raw 12-bit mapped to the panel). SW1 held. Current −168 mA.</p>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <div class="bezel"><img alt="Low-battery warning — 320x240 render" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADwBAMAAACDA6BYAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAeUExURRgcKTGd/4uRpAgMEBAUIP9dWubq9v/SOSkwQf///22ON6YAAAABYktHRAnx2aXsAAAAB3RJTUUH6gcZAAECEy8GLAAABR1JREFUeNrt3V1u4jAQAOAI7UNfkXoANPUJ4ALdyC0XaG+AOAESr/vIsdce2/EkOCQlMZ6UGTbFMfn58E8IW6epKgmJ8rHG8KnOK+nlrtZ/ciA6gvAGkCxX3VpMgGG2qdL4HF+oEvn3B4D5B5uVea5gg2k7sQGuNvZRbQBTBlutMB2BoZ139nelbvpDs4xPTKxlsMgNgYHLZAM0phV44MrObCpSgGTrQ8DWG2pWW08/0EC7BNsFWB4Y2yBgG/wJMFQfEcW+Us3WBtu9mB8wSjeJTNr0w2GlEZLDDOlKa9pp2vWdIdgDJSSKxpp58AfumIcABVg6FgF8xOH2vt144B+dPd7v2s27AAXICQhgJuWeyTzoWtm0+c6lZgDazYRN1rhZ5fLCbnuBtbIPwGdN5sGnTO4cQLsZUHRnyFVht/1AwMm+NV+Aft5NdstTfARoS8xtMr53pUcCbYH7BcN8A5xUwxFoq7SGNtDudbCKTWW60vZFGObdBGrOEtSQKMExbTCsocl8jjao72mD5l013UuT+dr1ZpW7Fw8D88YzHKgF+AzAj+/vr5DAEOAvA1rSl080XpoW4NKBXQUBTm6PAuQH/CCHmakNUIAcgbTRzfGRIkBmQJe4/vl8wL/xFzbLB4ZzQPfpQdMt+/MBXwfWWg4wbwhQgHyBLl571xLgXEDIGHrwZGHEJ4nKV3r1PED68SHAEOEwI8DbQFCLBSJt3GFGgEsF3gwBeqCe43uxACcDZ1bNDix7ujUCmDkEKEABCpA98PN4xMn80Pp4aJYxuYfUuufz+aT3Z5M4kczTrV1NA1oIYo4uNQh0Sr0/nZs8mp4dqBHyebC4gDqSdApoQZboCi+m8wBt9R4tyDw+PfB4PKSAe1O9poo1PvYe6PIyAn0JUpSF9pUglp9FhRLc709ZS7Bpgzq2QQuk7ZGGw8Q2mB1IevEh9GKsatKjW+Vnqtj8OIWemx2YOZYJDCNmU4MvWQBtwNBaDwZC7cau1jh4Fcev4oB3HM9aQ2KtBwPj4GLdqmI6AJkFEAcXswSCuzwAVQh0z3yAyiOx7dlSdM/YLjkAAX66VunDjAAFuAgg+0snWYcABVg6BCjA0rEIoDm93cFu+7YFCBPOmxdK8xzQ0N4o0KZNCh+lfW3g9g0nBIItwdK6AAxVagsMXQa4BTdfOmgJtoA7A+RQhP1ARm3Q9mJbzTs/sevFrEOAAiwd6e+DxTPbwJdLJ/4VzxSgAEtnCjAPEOBqPRwcdr2x60w/jqy7JFxvM71kZ0fLBCY3Ft3t3UJqycT7u85MbrObuUxgqooviY3ZjHHAtJq88AzAntrs6SRjMi9jeuMvAl5SDTp5RLkMN/2Xzn4ytUFOwJ49jGjlzwgc8wkU38q4JdOrJ4BjOgl7IAmup1sCFKAAlwpk/59HrEOAAiwdAhRg6RCgAEvHIoDDQzVLxe5hg2zvH5orQAFyAdqLjJqrUZqrUpgB6Z0M+AFrpejdNNgBw4VFDXDarRYeAORcgizbYHNplr9cix+QYwhQgKVDgAIsHQJ8KBDGvQR64E8T5ALeOnXoAmc7zaDAcM15uP48gQh/IwG94V5ftVs+3NLNrTtXEf4QSE8T6amj84TvW90inRsYEwPAeL85fA1PIYOtBLBWN0rQ3VzRlWCt8rbBPmAor04bRCC2zfDXJyBTLx4ElogeIHDxLQuIBxdO1bs8oA9GFbxQIKsQoABLhwDnApb+leHgLxNZhwAFWDrYA/8D1e7O6/uQEXUAAAAASUVORK5CYII="></div>
+        <figcaption>
+          <h3>Low-battery warning</h3>
+          <p>SoC ≤ 15% flips the gauge to red (12% / 3340 mV) with a heavy −540 mA draw. The color is driven by the value, so it reads at a glance without reading the number.</p>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <div class="bezel"><img alt="Sensor fault — 320x240 render" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAADwBAMAAACDA6BYAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAYUExURRgcKTGd/4uRpAgMEBAUIP9dWikwQf///0uagEAAAAABYktHRAcWYYjrAAAAB3RJTUUH6gcZAAEDZCg2ugAABQdJREFUeNrtnV2S4iAQxy1ra96t2gNYPZxAL7Cb4gq+75P3P8Ly1UASYjAm0hn/7TAJhMAv3Q0mgng4QCDt5eQk7A2OlPONzv9wQMfBhA8As3yHR9kAyNFo0rRNBw6F9OVCZP7ofDTbA51dsHExgMezfR3O5PbsfwPc0yD7+aC+EXVsDzFP2HnRymQhjdYOjGeDJECjviMFwGMIlBBT6XOAvQuKp51e72hopEFHLQUw+SBlPlgHyObLiFJbOazmg+NWfKw08XsAE+m5kJi7PncrkTDrZrKmdMobTd/eG4h4QAikqZyEi3zAq3ABIABbyy4A39HdLqsmAP7Sm8ufRdX8ASAAJQESmaD8NouT7pTdN89cagVAWwwX2blilU/jaicBO2Vf5LY6i1PYM6lrANpiSOWVOVzF1U4Dkgv20oICQ9wHW/IrfBmg1ZgvMl270pWAVuEhI8cj4EsWToDWpB31AW2tsyY2xvTaDirkuA+k1tSgpoIGa3yQz9BZfAsf1Et80FxVbF46i3e+NautW/E84LbyCR01AAEIQAACEIAABCAA2wDejITNLYsDsBpQB77wjwMAB4CmzoEp+4C8t8C8jwH/2tGanwDIpkv2HAHelll354CWzjD+XgGQOxkALgTMu5jVuhlGm3DDXQKOu5nbLSbHfuhZvn0D2r8KwG0FgFsC6jofBOAuAZ95JwHgTgHr7wcBuFfAubPiaGcYPOt4dL0j7YPqn0QzhZbOWQMwH92Mg4o8TeAZwHKG9QB1GDOOY+08wN1F7fbinR2q5GNhq/2otdmPqlwBkPz8BDYRhRcDxgsgtmQ+XaDLBoH9OXF/dQ36sXCeiqEmAZXP47T4PkA/IcOXG0hHgDwiz97mB71LgNlEhPVasdMaz6LonIYUA7oKu+CDpKNPOs8NmnR+Rzy9ZUVAL8uG/Ymm0mNxH/0RMAABCEAAAhCAAARgI0C+YyxNvhQBaIXmznozYP4wqP38VXebzA+FzQHT47fumTifgCwC0D/eSATkx2//5KfdQ6IoQJUeBjU/JPLHQhIAiZ49q3U3A0AA7gJQ/FcnRQsAAdhaAAjA1rILQHN7e6Xr5ftCxMHFzYHWeB7QoH3ngHbf7LlXa74+4OXbBQdIVoOt6RiQTWoV5rgM4IV8vLXkGuwBXg2gBBVOAwryQduKrZmvIYhrxaIFgABsLeXnweaJfcCv+0D+NU8EIABbJwJwG0Ci0XlkZVzYOJEoZc1y0rjMcs5BRfsELBaWuPvVUiln4frGicUyh4n7BCyZ+F4ozCbUAZapswOfADhhzYlGUpN4r2mNPwjwXnLoYo9yn3f9r0E9G/mgJMCJGiq8/BMBa96B0qXU5SyfXgCsaSTiATORersFQAACcK+A4j88Ei0ABGBrASAAWwsAAdhadgE4P1WzlVzfNsl2+dRcAAJQCmAX1kyIv6Yx/V2tdoD5LxnIA+yUyn9NQxwgf7EoAr72UwtvAJSsQZE+qLMVe0S2YpECQAC2FgACsLUA8K2AVHeIdMX6dVsAPrp1GAKudpuRA8bV/NICeUOIuDie1mmpwi4sXsZrJdCaKnwSML9NzG8deam4tHbdloBpZwYw/d6c5mXgIlsLwLhiX0mDftG8uLjepj44Bcj6GvigAwyLNcbF9TZpxbOALWQCkKTw7QvQdS6SzLs/wCCCDLxTQFECQAC2FgCuBdh6yHB2MFG0ABCArUU84H/8zBxWcmzOkgAAAABJRU5ErkJggg=="></div>
+        <figcaption>
+          <h3>Sensor fault</h3>
+          <p>BQ27441 not acking on I²C — the gauge panel says so plainly instead of showing stale zeros. The rest of the UI keeps working.</p>
+        </figcaption>
+      </figure>
+  </section>
+
+  <footer>
+    <p><strong>Pixel-accurate.</strong> Each image is the native 320&times;240 framebuffer output, shown at 2&times; with nearest-neighbour scaling. They are produced by the <em>same</em> C renderer (<code>pp_screen.h</code>, IBM VGA 8&times;8 font) that draws <code>/dev/fb0</code> on the target &mdash; so this preview is what the panel shows, not an impression of it.</p>
+  </footer>
+</main>

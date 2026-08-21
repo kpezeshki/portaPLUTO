@@ -1,0 +1,6 @@
+#!/bin/sh
+# Re-run the ILI9341 init at bind (fixes a flaky white panel). Kills fb writers first.
+pkill -f '/usr/bin/pp-' 2>/dev/null; pkill plutopack-panel 2>/dev/null; sleep 1
+echo spi1.0 > /sys/bus/spi/drivers/fb_ili9341/unbind 2>/dev/null; sleep 1
+echo spi1.0 > /sys/bus/spi/drivers/fb_ili9341/bind   2>/dev/null; sleep 1
+echo "fb_ili9341 rebound"
