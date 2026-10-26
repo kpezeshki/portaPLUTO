@@ -1,7 +1,7 @@
 (sym_lib_table
   (version 7)
-  (lib (name "TPS61031PWPR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS61031PWPR/TPS61031PWPR.kicad_sym")(options "")(descr ""))
-  (lib (name "TPS61032PWPR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS61032PWPR/TPS61032PWPR.kicad_sym")(options "")(descr ""))
-  (lib (name "TPS63020")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS63020/TPS63020.kicad_sym")(options "")(descr ""))
-  (lib (name "TSC2007IPWR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TSC2007IPWR/TSC2007IPWR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS61031PWPR")(type "KiCad")(uri "${KIPRJMOD}/../TPS61031PWPR/TPS61031PWPR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS61032PWPR")(type "KiCad")(uri "${KIPRJMOD}/../TPS61032PWPR/TPS61032PWPR.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS63020")(type "KiCad")(uri "${KIPRJMOD}/../TPS63020/TPS63020.kicad_sym")(options "")(descr ""))
+  (lib (name "TSC2007IPWR")(type "KiCad")(uri "${KIPRJMOD}/../TSC2007IPWR/TSC2007IPWR.kicad_sym")(options "")(descr ""))
 )

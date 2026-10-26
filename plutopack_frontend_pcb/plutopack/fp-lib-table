@@ -1,8 +1,8 @@
 (fp_lib_table
   (version 7)
-  (lib (name "TPS61031PWPR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS61031PWPR")(options "")(descr ""))
-  (lib (name "TPS61032PWPR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS61032PWPR")(options "")(descr ""))
-  (lib (name "TPS63020")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TPS63020")(options "")(descr ""))
-  (lib (name "TSC2007IPWR")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/TSC2007IPWR")(options "")(descr ""))
-  (lib (name "logo")(type "KiCad")(uri "/home/kaveh/Documents/stanfordphd/sum26/plutopack_frontend_pcb/logo")(options "")(descr ""))
+  (lib (name "TPS61031PWPR")(type "KiCad")(uri "${KIPRJMOD}/../TPS61031PWPR")(options "")(descr ""))
+  (lib (name "TPS61032PWPR")(type "KiCad")(uri "${KIPRJMOD}/../TPS61032PWPR")(options "")(descr ""))
+  (lib (name "TPS63020")(type "KiCad")(uri "${KIPRJMOD}/../TPS63020")(options "")(descr ""))
+  (lib (name "TSC2007IPWR")(type "KiCad")(uri "${KIPRJMOD}/../TSC2007IPWR")(options "")(descr ""))
+  (lib (name "logo")(type "KiCad")(uri "${KIPRJMOD}/../logo")(options "")(descr ""))
 )
