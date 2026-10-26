@@ -1,0 +1,44 @@
+# --- fetched upstreams (populated by each component's setup.sh) ---
+/fpga/maia-sdr/
+/zynq-firmware/tezuka_fw/
+
+# --- machine-specific tool paths (never commit) ---
+/fpga/env.sh
+
+# --- maintenance tooling (contains absolute dev-tree paths; never publish) ---
+/tools/
+
+# --- build outputs ---
+build/
+output/
+*.o
+*.a
+*.elf
+!zynq-firmware/overlay/board/tezuka/fishball7020/bitstream/fsbl.elf
+!zynq-firmware/overlay/board/tezuka/fishball7020/bitstream/overclock/*.elf
+
+# simulator build products
+/simulator/ppsim
+zynq-firmware/overlay/package/plutopack-panel/sim/ppsim
+zynq-firmware/overlay/package/plutopack-panel/sim/*.o
+
+# Pico build tree
+pico-firmware/build/
+
+# Vivado / FPGA build artifacts (if a build ran in-tree)
+*.jou
+*.log
+.Xil/
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+vivado*.backup*
+
+# editor / OS junk
+.DS_Store
+*~
+*.swp
+__pycache__/
