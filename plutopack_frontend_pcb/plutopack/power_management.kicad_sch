@@ -6298,6 +6298,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 168.91 168.91 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "01e74c65-4704-476f-8677-5d94bcddf421")
+		(property "Reference" "R58"
+			(at 171.45 167.6399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1k"
+			(at 171.45 170.1799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 170.688 168.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 168.91 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d5707129-14b2-4a84-9f1f-79d255b5560c")
+		)
+		(pin "2"
+			(uuid "b4adbb7d-515e-447c-9b05-ce3bac2cf538")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
+					(reference "R58")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "TPS63020:TPS63020")
 		(at 142.24 76.2 0)
 		(unit 1)
@@ -8715,6 +8785,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VCC")
+		(at 168.91 165.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "39833455-703e-486e-9ae0-674c4691d077")
+		(property "Reference" "#PWR0135"
+			(at 168.91 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 168.91 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 168.91 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cedf21ae-9af0-43d5-99a0-c583adcf8e0a")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
+					(reference "#PWR0135")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 19.05 96.52 0)
 		(unit 1)
@@ -10410,6 +10546,72 @@
 			(project ""
 				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
 					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 168.91 180.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "70b4a041-a3b4-4281-8cd7-5d1242b9e74b")
+		(property "Reference" "#PWR0136"
+			(at 168.91 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 168.91 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 168.91 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2a3b57d5-7c0d-4190-a231-78c900582e86")
+		)
+		(instances
+			(project ""
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
+					(reference "#PWR0136")
 					(unit 1)
 				)
 			)
@@ -15200,6 +15402,85 @@
 			(project "plutopack"
 				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
 					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 168.91 176.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ff12920e-364a-4520-9478-098ed07f75ff")
+		(property "Reference" "D9"
+			(at 172.72 176.8474 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 172.72 179.3874 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 168.91 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 168.91 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 168.91 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 168.91 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0443c870-e484-4769-a5f2-1630391ed0c6")
+		)
+		(pin "2"
+			(uuid "00636b28-b075-4611-b9f6-45a4b19c0fe8")
+		)
+		(instances
+			(project "plutopack"
+				(path "/56056f02-0d12-4351-8217-6118cc2eb35a/03d2557a-61d2-4f7d-a1ab-c3349330fefa"
+					(reference "D9")
 					(unit 1)
 				)
 			)
