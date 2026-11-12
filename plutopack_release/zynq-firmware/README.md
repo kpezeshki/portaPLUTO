@@ -11,7 +11,7 @@ are fetched by `setup.sh`.
 ```
 overlay/board/tezuka/fishball7020/     board support:
     dts/                                  device tree (display, spi-gpio to Pico, AD9361)
-    overlay/etc/init.d/                   S60maia-httpd / S95bgcript / S99zzbootdone overrides
+    overlay/etc/init.d/                   S21ppdata calibration store + boot service overrides
     uboot-env.txt                         U-Boot environment
     bitstream/maia-iio/system_top.xsa     prebuilt FPGA XSA (rebuild via ../fpga)
     bitstream/fsbl.elf, overclock/        prebuilt FSBL (+ overclock variants)
@@ -29,7 +29,9 @@ config and adds our DTS, root-fs overlay, and the `plutopack-panel` package;
 `overlay/package/plutopack-panel/` is the on-panel software: `pp-launcher` (the
 app switcher that boots at S30) plus the app suite — WATERFALL (maia-sdr),
 SPECTRUM, SNA, SCOPE, VNA, tone/two-tone generators, RTL_433, ADS-B, an RFIC
-status/calibration screen, a root TERMINAL, TOUCH CAL, and diagnostics. All apps
+status/calibration screen, RX power meter and calibration, a root TERMINAL,
+TOUCH CAL, and diagnostics. The RX power calibration is stored under `/data`.
+All apps
 share the `pp_ui.h` UI framework and talk to the Pico over `/dev/spidev*`
 (`pp_common.h`) and to maia-httpd over local HTTP (`pp_maia.h`).
 

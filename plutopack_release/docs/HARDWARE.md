@@ -27,9 +27,10 @@ Zynq pulse display reset, set CS, and drive user GPIO.
 
 ## Full pin map
 
-The authoritative, verified pin assignment — every Zynq ball (with device-DB pin
-names), FFC/header pins, and the Pico GPIO assignments — is in
+The V1.1 pin assignment, checked against the current KiCad netlist, covers the
+Zynq balls, FFC/header pins, and Pico GPIO assignments in
 [`../pico-firmware/PINMAP.md`](../pico-firmware/PINMAP.md).
+The assembled V1.1 board still needs a boot and display check.
 
 ## Software map
 
