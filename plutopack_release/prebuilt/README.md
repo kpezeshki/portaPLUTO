@@ -11,7 +11,6 @@ sd-image/                     Zynq SD-card boot files
     uEnv.txt                  U-Boot environment
     uramdisk.image.xz         U-Boot-wrapped root filesystem (historical filename)
     system_top.bin            raw bitstream (reference)
-    tezuka.zip                the images/ set, zipped
 ```
 
 - **Pico:** hold BOOTSEL, plug in USB, copy `pico/plutopack_mcu.uf2` to the
@@ -21,5 +20,5 @@ sd-image/                     Zynq SD-card boot files
   `uEnv.txt` expects the exact filename `uramdisk.image.xz`; despite the suffix,
   the file is a U-Boot ramdisk image and must be copied unchanged.
 
-The prebuilt SD image is a coordinated set. Keep the loose boot files and
-`tezuka.zip` from the same release when copying or archiving them.
+The prebuilt SD image is a coordinated set. Keep the boot files from the same
+release when copying or archiving them.
