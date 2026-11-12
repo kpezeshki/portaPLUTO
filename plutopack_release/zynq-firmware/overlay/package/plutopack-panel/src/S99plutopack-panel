@@ -17,7 +17,10 @@ pp_ad9361_cal(){
   done
 }
 case "$1" in
-  start)   pp_ad9361_cal; echo "Starting app picker"; /usr/bin/pp-launcher "$DEV" /dev/fb0 & ;;
+  # pp-fbrebind resets the panel through the Pico and re-runs fbtft's init.
+  # The panel's serial input can come up out of step during boot.
+  start)   pp_ad9361_cal; /usr/bin/pp-fbrebind "$DEV"
+           echo "Starting app picker"; /usr/bin/pp-launcher "$DEV" /dev/fb0 & ;;
   stop)    kill "$(pidof pp-launcher)" 2>/dev/null ;;
   restart) "$0" stop; sleep 1; "$0" start ;;
   *) echo "Usage: $0 {start|stop|restart}"; exit 1 ;;

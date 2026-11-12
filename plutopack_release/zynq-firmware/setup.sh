@@ -32,6 +32,17 @@ cp -f  "${SCRIPT_DIR}/overlay/configs/"*                 "${TEZUKA_DIR}/configs/
 cp -rf "${SCRIPT_DIR}/overlay/package/plutopack-panel"   "${TEZUKA_DIR}/package/"
 echo "   -> board/tezuka/fishball7020, configs/, package/plutopack-panel"
 
+# Register the plutopack-panel package in the external tree's Config.in (idempotent).
+# Without this line Kconfig drops BR2_PACKAGE_PLUTOPACK_PANEL, and the image has no launcher.
+CFG="${TEZUKA_DIR}/Config.in"
+PANEL_SRC='source "$BR2_EXTERNAL_PLUTOSDR_PATH/package/plutopack-panel/Config.in"'
+if ! grep -qF "${PANEL_SRC}" "${CFG}"; then
+    echo "== Registering plutopack-panel in Config.in =="
+    # Upstream's Config.in has no final newline, so add one before appending.
+    [ -z "$(tail -c 1 "${CFG}")" ] || echo >> "${CFG}"
+    echo "${PANEL_SRC}" >> "${CFG}"
+fi
+
 # Ensure the board->defconfig mapping exists in boards.json (idempotent).
 BJ="${TEZUKA_DIR}/boards.json"
 if ! grep -q '"fishball7020"' "${BJ}" 2>/dev/null; then

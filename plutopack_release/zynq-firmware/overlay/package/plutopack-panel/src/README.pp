@@ -9,7 +9,7 @@ Headless / debug:
   pp-status [spidev]    poll Pico, print decoded status as text
   pp-probe [spidev] [mode] [hz] [n]   raw 32-byte SPI frame dump (default mode 1)
   pp-fbnoise [fb] [n]   write noise frames to the panel (display sanity)
-  pp-fbrebind           unbind/rebind fbtft (re-init the panel; fixes flaky white)
+  pp-fbrebind [spidev]  reset the panel via the Pico, rebind fbtft (fixes white)
 
 Display SPI clock (higher = faster refresh; needs the fast level-shifter path):
   disp_speed <250k|1|2|5|10|HZ>  edit boot devicetree in place (fdtput) + reboot
