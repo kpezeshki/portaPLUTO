@@ -1,6 +1,32 @@
 #!/bin/sh
-# Re-run the ILI9341 init at bind (fixes a flaky white panel). Kills fb writers first.
-pkill -f '/usr/bin/pp-' 2>/dev/null; pkill plutopack-panel 2>/dev/null; sleep 1
+# Reset the panel through the Pico, then rebind fbtft so it runs the ILI9341 init again.
+# This fixes a white panel. It kills fb writers first.
+#
+# The Pico holds the panel's CS low all the time, so the panel never re-frames its serial input on CS.
+# Stray clock edges, such as those while the FPGA loads, can leave it misreading every byte.
+# fbtft's init at boot then has no effect.
+# Raising CS and pulsing RESET clears that state.
+#
+# Usage: pp-fbrebind [pico-spidev]
+DEV="${1:-${PLUTOPACK_PANEL_SPIDEV:-$(ls /dev/spidev* 2>/dev/null | head -1)}}"
+
+# Each Pico command frame is 32 bytes: A5, the command, its argument, zeros, then a CRC-8 (polynomial 0x07).
+CS_HIGH='\245\001\003\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\343' # SET_DISP_CTRL RST=1 CS=1
+RESET20='\245\002\024\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\200' # PULSE_RESET 20 ms
+CS_LOW='\245\001\001\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\275'  # SET_DISP_CTRL RST=1 CS=0
+pico_cmd() { printf "$1" | spi-pipe -d "$DEV" -m 1 -s 1000000 -b 32 > /dev/null; }
+
+# Kill fb writers.
+# Skip this script's own PID, because its command line also matches.
+for p in $(pgrep -f '/usr/bin/pp-'); do [ "$p" = "$$" ] || kill "$p" 2>/dev/null; done
+pkill plutopack-panel 2>/dev/null; sleep 1
 echo spi1.0 > /sys/bus/spi/drivers/fb_ili9341/unbind 2>/dev/null; sleep 1
+if [ -c "$DEV" ]; then
+  pico_cmd "$CS_HIGH"; sleep 0.2
+  pico_cmd "$RESET20"; sleep 0.3
+  pico_cmd "$CS_LOW";  sleep 0.2
+else
+  echo "pp-fbrebind: no Pico spidev, skipping panel reset" >&2
+fi
 echo spi1.0 > /sys/bus/spi/drivers/fb_ili9341/bind   2>/dev/null; sleep 1
 echo "fb_ili9341 rebound"
