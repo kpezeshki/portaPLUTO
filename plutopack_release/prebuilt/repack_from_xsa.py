@@ -7,7 +7,6 @@ Requires Xilinx bootgen on PATH or --bootgen. Run after fpga/build.sh.
 
 import argparse
 import hashlib
-import os
 from pathlib import Path
 import shutil
 import struct
@@ -94,37 +93,11 @@ def main() -> None:
             staged[name] = data
         staged["system_top.bin"] = raw_bit
 
-        archive = tmp / "tezuka.zip"
-        with ZipFile(SD / "tezuka.zip") as old, ZipFile(archive, "w") as new:
-            for info in old.infolist():
-                if info.is_dir():
-                    new.writestr(info, b"")
-                    continue
-                rel = Path(info.filename).relative_to("sdimg")
-                data = staged.get(str(rel))
-                if data is None:
-                    data = (SD / rel).read_bytes()
-                new.writestr(info, data)
-        with ZipFile(archive) as z:
-            for info in z.infolist():
-                if info.is_dir():
-                    continue
-                rel = str(Path(info.filename).relative_to("sdimg"))
-                data = staged.get(rel)
-                if data is None:
-                    data = (SD / rel).read_bytes()
-                if sha(z.read(info)) != sha(data):
-                    raise ValueError(f"ZIP mismatch: {rel}")
-
         for name, data in staged.items():
             target = SD / name
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(data)
             print(f"{name}: {sha(data)}")
-        staged_zip = SD / "tezuka.zip.tmp"
-        shutil.copy2(archive, staged_zip)
-        os.replace(staged_zip, SD / "tezuka.zip")
-        print(f"tezuka.zip: {sha((SD / 'tezuka.zip').read_bytes())}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,8 @@
+#!/bin/sh
+# PlutoPack override of the common (tezuka/DATV) S96plutostream.
+#
+# Upstream S96plutostream starts the DATV streaming helpers pluto_stream, pluto_mqtt_ctrl, mqtt_obs_ctrl.sh and bitrate_strategy.sh.
+# pluto_stream expects FPGA blocks that the maia bitstream does not have, so it dies at boot with "Unhandled fault: external abort on non-linefetch".
+# None of the four helpers is a PlutoPack feature.
+# This no-op replaces them for the fishball7020 build.
+exit 0

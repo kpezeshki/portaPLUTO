@@ -54,7 +54,7 @@ cp env.sh.example env.sh   # then edit VIVADO_SETTINGS / MAIA_HDL_VENV for your 
 where the SD-image build consumes it. A prebuilt XSA already ships there, so you
 can skip the FPGA build entirely if you only want to rebuild the Linux image.
 Run `../prebuilt/repack_from_xsa.py` with `bootgen` after building to refresh
-the flashable `BOOT.bin`, overclock variants, `system_top.bin`, and SD ZIP.
+the flashable `BOOT.bin`, overclock variants and `system_top.bin`.
 
 ## Pinned upstream revisions
 
