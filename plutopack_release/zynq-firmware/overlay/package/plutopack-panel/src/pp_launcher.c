@@ -13,7 +13,8 @@
 #include "pp_common.h"
 
 enum { IC_WATERFALL, IC_TONE, IC_SPECTRUM, IC_TEST, IC_SNA, IC_SCOPE, IC_IQREC, IC_RTL433, IC_ADSB,
-       IC_VNA, IC_TWOTONE, IC_AMPGAIN, IC_ATTEN, IC_MANUAL, IC_TETRIS, IC_RFIC, IC_ACKS, IC_TCAL, IC_TERM };
+       IC_VNA, IC_TWOTONE, IC_AMPGAIN, IC_ATTEN, IC_MANUAL, IC_TETRIS, IC_RFIC, IC_ACKS, IC_TCAL, IC_TERM,
+       IC_PWR, IC_RXCAL };
 typedef struct { const char *label, *path; int icon, exp; } app_t;   /* exp=1 -> "EXP" badge */
 static const app_t APPS[] = {
     /* stable apps first */
@@ -26,9 +27,11 @@ static const app_t APPS[] = {
     { "RTL_433",   "/usr/bin/pp-rtl433",   IC_RTL433,    0 },
     { "ADS-B",     "/usr/bin/pp-adsb",     IC_ADSB,      0 },
     { "RFIC STAT", "/usr/bin/pp-rficstat", IC_RFIC,      0 },
+    { "POWER METER","/usr/bin/pp-powermeter", IC_PWR,    0 },
     { "TERMINAL",  "/usr/bin/pp-term",     IC_TERM,      0 },
     { "FRONTEND STAT","/usr/bin/pp-test",  IC_TEST,      0 },
     { "TOUCH CAL", "/usr/bin/pp-touchcal", IC_TCAL,      0 },
+    { "RX PWR CAL","/usr/bin/pp-rxpowercal", IC_RXCAL,   0 },
     { "TETRIS",    "/usr/bin/pp-tetris",   IC_TETRIS,    0 },
     { "MANUAL",    "/usr/bin/pp-manual",   IC_MANUAL,    0 },
     { "CREDITS",   "/usr/bin/pp-acks",     IC_ACKS,      0 },
@@ -162,6 +165,17 @@ static void draw_icon(uint16_t *buf, int ix, int iy, int icon, int sel){
         pp_fill(buf, ix+7, iy+12, 10,1, a);                                /* crosshair H */
         pp_fill(buf, ix+11,iy+8,  1,10, a);                                /* crosshair V */
         pp_rect(buf, ix+9, iy+10, 5,5, a);                                 /* target box  */
+    } else if(icon==IC_PWR){                            /* power meter: signal bars */
+        uint16_t c=C_GOOD;
+        pp_fill(buf, ix+3, iy+16, 3,5,  c);
+        pp_fill(buf, ix+9, iy+11, 3,10, c);
+        pp_fill(buf, ix+15,iy+6,  3,15, c);
+        pp_fill(buf, ix+21,iy+3,  3,18, c);
+    } else if(icon==IC_RXCAL){                          /* rx power cal: wave -> gauge */
+        uint16_t c=C_WARN, a=C_ACCENT;
+        for(int x=0;x<12;x++){ int y=iy+12 - SINE24[(x*2)%24]/2; pp_fill(buf, ix+2+x, y, 1,2, a); }
+        pp_rect(buf, ix+14, iy+6, 10,12, c);
+        pp_fill(buf, ix+18, iy+8, 2,8,  c);
     } else {                                            /* IC_ACKS: lines of text */
         uint16_t c=pp_rgb(0x8a,0xe0,0xff);
         pp_fill(buf, ix+2, iy+3,  20,3, C_ACCENT);
@@ -277,7 +291,9 @@ int main(int argc, char **argv){
                 { extern int sim_run_app(const char*,const char*,const char*);
                   sim_run_app(APPS[sel].path, spidev, fbdev); }        /* in-process in the sim */
 #else
-                int is_wf = strstr(APPS[sel].path,"pp-sdr")!=NULL;   /* only WATERFALL needs maia */
+                int is_wf = strstr(APPS[sel].path,"pp-sdr")!=NULL       /* WATERFALL */
+                         || strstr(APPS[sel].path,"pp-powermeter")!=NULL /* meter: maia RX */
+                         || strstr(APPS[sel].path,"pp-rxpowercal")!=NULL;/* cal: maia RX */
                 maia_ctl(is_wf ? "on" : "off");
                 pid_t pid=fork();
                 if(pid==0){ execl(APPS[sel].path, APPS[sel].path, spidev, fbdev, (char*)0); _exit(127); }

@@ -8,6 +8,9 @@ SPI-slave link to the Zynq). A prebuilt UF2 ships in
 
 ## Flash the prebuilt UF2 (no toolchain)
 
+Power the assembled PlutoPack before connecting the Pico or PlutoSky USB to a
+computer; see the root README's power warning.
+
 1. Hold **BOOTSEL** on the Pico while plugging it into USB → it mounts as the
    `RPI-RP2` mass-storage drive.
 2. Copy `plutopack_mcu.uf2` onto that drive. The Pico reboots into the firmware.

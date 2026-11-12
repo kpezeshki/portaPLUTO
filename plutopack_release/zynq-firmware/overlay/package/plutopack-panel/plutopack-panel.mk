@@ -35,6 +35,8 @@ define PLUTOPACK_PANEL_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 $(@D)/pp-tetris      $(TARGET_DIR)/usr/bin/pp-tetris
 	$(INSTALL) -D -m 0755 $(@D)/pp-acks        $(TARGET_DIR)/usr/bin/pp-acks
 	$(INSTALL) -D -m 0755 $(@D)/pp-rficstat    $(TARGET_DIR)/usr/bin/pp-rficstat
+	$(INSTALL) -D -m 0755 $(@D)/pp-powermeter  $(TARGET_DIR)/usr/bin/pp-powermeter
+	$(INSTALL) -D -m 0755 $(@D)/pp-rxpowercal  $(TARGET_DIR)/usr/bin/pp-rxpowercal
 	$(INSTALL) -D -m 0755 $(@D)/pp-term        $(TARGET_DIR)/usr/bin/pp-term
 	$(INSTALL) -D -m 0755 $(@D)/pp-status      $(TARGET_DIR)/usr/bin/pp-status
 	$(INSTALL) -D -m 0755 $(@D)/pp-probe       $(TARGET_DIR)/usr/bin/pp-probe

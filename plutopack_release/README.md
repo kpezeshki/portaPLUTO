@@ -6,10 +6,12 @@ radio with a touchscreen front panel: a **Zynq-7020** running Linux + a
 panel, and a **Raspberry Pi Pico** front-panel controller. The panel runs a suite
 of self-contained apps (waterfall, spectrum analyzer, scalar/vector network
 analyzer, oscilloscope, tone generators, RTL_433, ADS-B, RF-IC status &
-calibration, a root terminal, and diagnostics) sharing one UI framework.
+calibration, an RX power meter, a root terminal, and diagnostics) sharing one UI framework.
 
-This repository contains everything needed to build the software and bring up a
-board, organised into four components:
+The checked-in front-end PCB is marked **V1.1**. Confirm the matching PlutoSky
+header orientation before flashing the prebuilt image.
+
+This repository contains the software and build inputs, organised into these components:
 
 | Directory | What it is | Build guide |
 |---|---|---|
@@ -38,6 +40,9 @@ More detail: [`docs/HARDWARE.md`](docs/HARDWARE.md) and the verified pin map in
 ## Quick start
 
 **Just flash a board (no build):**
+
+Power the assembled system before connecting the Pico or PlutoSky USB to a
+computer.
 
 1. Pico: hold BOOTSEL, plug in USB, drop [`prebuilt/pico/plutopack_mcu.uf2`](prebuilt/pico) on the `RPI-RP2` drive.
 2. SD card: write [`prebuilt/sd-image/`](prebuilt/sd-image) to a FAT32 boot partition — see [docs/BUILD_SD_IMAGE.md](docs/BUILD_SD_IMAGE.md).

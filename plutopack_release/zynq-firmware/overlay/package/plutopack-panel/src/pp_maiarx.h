@@ -103,6 +103,9 @@ static int mrx_capture(int16_t *iq, int max_n, double dur_s){
     close(fd);
     return (int)(got/4);
 }
+/* on hardware there is no emulated source — the real bench generator drives RX */
+__attribute__((unused))
+static void pp_sim_set_source(long long hz,double dbm,int on){ (void)hz;(void)dbm;(void)on; }
 
 #else /* ---------------------- PP_SIM: synthetic IQ ---------------------- */
 #include <math.h>
@@ -110,8 +113,37 @@ static long long mrx_lo_hz=433920000LL, mrx_fs_hz=4000000LL; static double mrx_g
 static int mrx_config(long long lo,long long fs,double g,long long bw,const char*gm){
     (void)bw;(void)gm; mrx_lo_hz=lo; mrx_fs_hz=fs>0?fs:1; mrx_gain=g; return 1; }
 static long long mrx_get_fs(void){ return mrx_fs_hz; }
+/* emulated bench source, driven by the cal app so the cal->meter pipeline is
+ * exercisable in the web simulator. When on, mrx_capture synthesises one tone
+ * whose level follows a plausible model: level(dBFS) = P_dbm + gain - 20
+ *   - 6 dB * (|offset|/(fs/2))^2   (passband rolloff)
+ *   - 2 dB * (lo-1GHz)/1GHz        (gentle freq slope)
+ * clipped at full scale (overload). When off, the original 3-tone model runs
+ * (so the other sim apps are unaffected). */
+static long long pp_sim_src_hz=0; static double pp_sim_src_dbm=-30.0; static int pp_sim_src_on=0;
+__attribute__((unused))
+static void pp_sim_set_source(long long hz,double dbm,int on){ pp_sim_src_hz=hz; pp_sim_src_dbm=dbm; pp_sim_src_on=on; }
 static int mrx_capture(int16_t *iq,int max_n,double dur_s){
     (void)dur_s;
+    const double FS=32767.0;
+    if(pp_sim_src_on){
+        static double sph=0; double off=(double)(pp_sim_src_hz-mrx_lo_hz);
+        double A=0;
+        if(fabs(off)<mrx_fs_hz*0.49){
+            double rel=fabs(off)/((double)mrx_fs_hz*0.5);
+            double lvl=pp_sim_src_dbm+mrx_gain-20.0 - 6.0*rel*rel
+                       - 2.0*((double)mrx_lo_hz-1e9)/1e9;
+            A=FS*pow(10.0,lvl/20.0); if(A>FS)A=FS;              /* overload clip */
+        }
+        double dph = fabs(off)<mrx_fs_hz*0.49 ? 2.0*M_PI*off/(double)mrx_fs_hz : 0;
+        for(int i=0;i<max_n;i++){
+            double I=((rand()&0xff)/255.0-0.5)*40.0, Q=((rand()&0xff)/255.0-0.5)*40.0;
+            if(A>0){ sph+=dph; double c=A*cos(sph), s=A*sin(sph);
+                     I+=c; Q+=s; if(I>FS)I=FS; if(I<-FS)I=-FS; if(Q>FS)Q=FS; if(Q<-FS)Q=-FS; }
+            iq[2*i]=(int16_t)I; iq[2*i+1]=(int16_t)Q;
+        }
+        return max_n;
+    }
     static double ph[3]; static const long long SIG[3]={433920000LL,868000000LL,2402000000LL};
     static const double AMP[3]={1500.0,700.0,1000.0};
     double g=pow(10.0,(mrx_gain-30.0)/20.0);

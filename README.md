@@ -10,7 +10,7 @@ To build a portaPLUTO, you will need the following:
 - a PlutoSky board. Buy one without the GPIO header, as you'll want pins of a different height
 - a mainboard PCB. JLCPCB stocks most of the components, but minor SMT hand assembly is required
 - an aluminum midplate. The Fusion file includes toolpaths for a Makera Carvera, but you can get this manufactured externally. This needs to be aluminum, not plastic, as it is used as a heatsink.
-- an 18560 cell. Unprotected is OK. The max discharge you should expect is 1.5 A
+- an 18650 cell. Unprotected is OK. The max discharge you should expect is 1.5 A
 - a CH320QV15A-T 3.2" TFT display. Adafruit resells these
 - Assorted 3D printed components (backplate, display mount, knob). Some of these have versions intended for machining with toolpaths
 

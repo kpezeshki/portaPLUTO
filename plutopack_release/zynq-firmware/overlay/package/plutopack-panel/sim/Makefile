@@ -7,7 +7,7 @@ SRCDIR  = ../src
 CFLAGS ?= -O2 -Wall -DPP_SIM -I$(SRCDIR)
 LDLIBS  = -lm -lpthread
 
-OBJS = sim_main.o pp_font.o pp_launcher.o pp_sdr.o pp_tonegen.o pp_spectrum.o pp_sna.o pp_scope.o pp_iqrec.o pp_rtl433.o pp_adsb.o pp_vna.o pp_twotone.o pp_ampgain.o pp_atten.o pp_manual.o pp_tetris.o pp_acks.o pp_test.o pp_term.o pp_rficstat.o pp_touchcal.o
+OBJS = sim_main.o pp_font.o pp_launcher.o pp_sdr.o pp_tonegen.o pp_spectrum.o pp_sna.o pp_scope.o pp_iqrec.o pp_rtl433.o pp_adsb.o pp_vna.o pp_twotone.o pp_ampgain.o pp_atten.o pp_manual.o pp_tetris.o pp_acks.o pp_test.o pp_term.o pp_rficstat.o pp_touchcal.o pp_powermeter.o pp_rxpowercal.o
 HDRS = $(SRCDIR)/pp_common.h $(SRCDIR)/pp_ui.h $(SRCDIR)/pp_maia.h \
        $(SRCDIR)/pp_iio.h $(SRCDIR)/pp_cap.h $(SRCDIR)/pp_screen.h $(SRCDIR)/pp_waterfall.h \
        $(SRCDIR)/pp_iq.h $(SRCDIR)/pp_fft.h
@@ -59,6 +59,10 @@ pp_rficstat.o: $(SRCDIR)/pp_rficstat.c $(HDRS)
 	$(CC) $(CFLAGS) -Dmain=pp_rficstat_main -c $(SRCDIR)/pp_rficstat.c -o $@
 pp_touchcal.o: $(SRCDIR)/pp_touchcal.c $(HDRS)
 	$(CC) $(CFLAGS) -Dmain=pp_touchcal_main -c $(SRCDIR)/pp_touchcal.c -o $@
+pp_powermeter.o: $(SRCDIR)/pp_powermeter.c $(HDRS) $(SRCDIR)/pp_maiarx.h $(SRCDIR)/pp_rxcal.h $(SRCDIR)/pp_rxmeas.h
+	$(CC) $(CFLAGS) -Dmain=pp_powermeter_main -c $(SRCDIR)/pp_powermeter.c -o $@
+pp_rxpowercal.o: $(SRCDIR)/pp_rxpowercal.c $(HDRS) $(SRCDIR)/pp_maiarx.h $(SRCDIR)/pp_rxcal.h $(SRCDIR)/pp_rxmeas.h
+	$(CC) $(CFLAGS) -Dmain=pp_rxpowercal_main -c $(SRCDIR)/pp_rxpowercal.c -o $@
 
 clean:
 	rm -f $(OBJS) ppsim

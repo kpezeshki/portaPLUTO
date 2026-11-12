@@ -78,10 +78,15 @@ int main(int argc, char **argv){
                         }
                         M[1][0]=M[0][1]; M[2][0]=M[0][2]; M[2][1]=M[1][2]; M[2][2]=NP;
                         if(solve3(M,bx,ax)==0 && solve3(M,by,ay)==0){
-                            FILE *f=fopen(PP_TOUCHCAL_PATH,"w");
+                            /* write atomically (temp + rename) to the persistent
+                             * cal dir, so a new cal cleanly overwrites the old. */
+                            char path[96]; snprintf(path,sizeof path,"%s",pp_cal_path(PP_TOUCHCAL_NAME));
+                            char tmp[112]; snprintf(tmp,sizeof tmp,"%s.tmp",path);
+                            FILE *f=fopen(tmp,"w");
                             if(f){ fprintf(f,"%.8g %.8g %.8g %.8g %.8g %.8g\n",
                                           ax[0],ax[1],ax[2],ay[0],ay[1],ay[2]);
-                                   fclose(f); saved_ok=1;
+                                   fflush(f); fsync(fileno(f)); fclose(f);
+                                   saved_ok = (rename(tmp,path)==0);
                                    pp_tcal_ok=0; pp_tcal_tried=0; }  /* force reload */
                         }
                         done=1;

@@ -4,3 +4,4 @@ set maia_iio "maia_iio"
 set with_tx_fir "with_tx_fir"
 set with_rx_fir_maia "with_rx_fir_maia"
 source ../pluto/system_bd.tcl
+source ../fishball7020_iio/plutopack_io_bd.tcl

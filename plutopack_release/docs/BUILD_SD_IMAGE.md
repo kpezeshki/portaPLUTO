@@ -38,23 +38,25 @@ zynq-firmware/tezuka_fw/output/fishball7020/images/
     BOOT.bin              FSBL + bitstream + U-Boot
     uImage                Linux kernel
     devicetree.dtb        device tree
-    uramdisk.image.gz     root filesystem (initramfs)
+    uramdisk.image.xz     U-Boot-wrapped root filesystem (historical filename)
     uEnv.txt              U-Boot environment
 zynq-firmware/tezuka_fw/build/fishball7020.zip   the above, zipped
 ```
 
 ## 3. Prepare the SD card
 
-A single small FAT32 boot partition is all the Zynq needs (this build runs the
-root filesystem from a RAM disk / initramfs, so there is no separate rootfs
-partition to write).
+A FAT32 boot partition is required. A second data partition is recommended for
+persistent touch and RX power calibration; the root filesystem runs from RAM.
+The init script mounts `/dev/mmcblk0p2` at `/data` when that partition exists.
 
 ```bash
 # Identify your card first!  lsblk    (example uses /dev/sdX — DOUBLE-CHECK THIS)
 sudo parted -s /dev/sdX mklabel msdos
-sudo parted -s /dev/sdX mkpart primary fat32 1MiB 100%
+sudo parted -s /dev/sdX mkpart primary fat32 1MiB 1GiB
 sudo parted -s /dev/sdX set 1 boot on
+sudo parted -s /dev/sdX mkpart primary fat32 1GiB 100%
 sudo mkfs.vfat -F32 /dev/sdX1
+sudo mkfs.vfat -F32 /dev/sdX2
 ```
 
 ## Flashing
@@ -62,15 +64,14 @@ sudo mkfs.vfat -F32 /dev/sdX1
 Copy the boot files onto the FAT32 partition:
 
 ```bash
+cd /path/to/portaPLUTO/plutopack_release
 sudo mount /dev/sdX1 /mnt
-sudo unzip -o fishball7020.zip -d /mnt        # or copy the individual images/ files
-sudo cp BOOT.bin uImage devicetree.dtb uramdisk.image.gz uEnv.txt /mnt/   # if not using the zip
+sudo cp prebuilt/sd-image/{BOOT.bin,uImage,devicetree.dtb,uramdisk.image.xz,uEnv.txt,system_top.bin} /mnt/
 sudo umount /mnt
 ```
 
-(The `prebuilt/sd-image/` directory ships `uramdisk.image.xz`; if your `uEnv.txt`
-expects `uramdisk.image.gz`, decompress and recompress accordingly, or adjust
-the `uenvcmd`/`ramdisk_image` name in `uEnv.txt` to match the file you place.)
+Use the `uEnv.txt` and `uramdisk.image.xz` from the same release. The latter is
+a U-Boot image despite its suffix; do not decompress it before copying.
 
 Insert the card, power on. The front panel shows the boot splash, then the
 launcher. The FPGA is loaded by the FSBL from `BOOT.bin`; maia-httpd starts

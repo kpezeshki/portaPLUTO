@@ -17,6 +17,7 @@ projects/fishball_iio/        the real HDL:
     system_project.tcl           Vivado project recipe (device, sources, strategy)
     Makefile, *overclock.sh, create_fsbl_project.tcl
 projects/fishball7020_iio/    the 7020 build variant that wraps the above
+    plutopack_io_bd.tcl         PS SPI1 and EMIO GPIO extension for V1.1
 ```
 
 The projects reference the base `pluto` block design and `../../adi-hdl`,
@@ -30,13 +31,15 @@ fetches maia-sdr and overlays these directories into it.
   generate the maia-sdr IP cores. Create one, e.g.:
   ```bash
   python3 -m venv ~/.venvs/maia-hdl
-  ~/.venvs/maia-hdl/bin/pip install amaranth
+  ~/.venvs/maia-hdl/bin/pip install amaranth amaranth-yosys
   # after setup.sh has fetched the tree, install maia-hdl itself:
   ~/.venvs/maia-hdl/bin/pip install -e fpga/maia-sdr/maia-hdl
   ```
   (See the upstream `maia-sdr/maia-hdl` README for the authoritative dependency
   list; the version pinned here is recorded in `setup.sh`.)
 - `git`, `make`.
+- On hosts where Vivado crashes in its bundled `libudev`, set
+  `LD_PRELOAD=/lib/x86_64-linux-gnu/libudev.so.1` in `env.sh` before building.
 
 ## Build
 
@@ -50,6 +53,8 @@ cp env.sh.example env.sh   # then edit VIVADO_SETTINGS / MAIA_HDL_VENV for your 
 `../zynq-firmware/overlay/board/tezuka/fishball7020/bitstream/maia-iio/`, which is
 where the SD-image build consumes it. A prebuilt XSA already ships there, so you
 can skip the FPGA build entirely if you only want to rebuild the Linux image.
+Run `../prebuilt/repack_from_xsa.py` with `bootgen` after building to refresh
+the flashable `BOOT.bin`, overclock variants, `system_top.bin`, and SD ZIP.
 
 ## Pinned upstream revisions
 
@@ -62,8 +67,8 @@ can skip the FPGA build entirely if you only want to rebuild the Linux image.
 ## Notes
 
 - The FSBL is **not** rebuilt here (it needs XSCT/Vitis). A prebuilt
-  `fsbl.elf` ships in the firmware tree; regenerate it with
-  `make fsbl` inside the project only if you change the PS7 configuration.
+  `fsbl.elf` ships in the firmware tree. The V1.1 design enables PS SPI1
+  and expands EMIO GPIO; Linux configures these peripherals at runtime.
 - `overclock.sh` / `all_overclock.sh` patch the FSBL's PS7 init to raise the
   CPU/DDR PLL multipliers; the shipped image uses the stock (non-overclocked)
   FSBL.

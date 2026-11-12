@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
+#include <sys/stat.h>
 #include <linux/fb.h>
 #include <linux/spi/spidev.h>
 #include "pp_screen.h"
@@ -296,20 +297,45 @@ static int pp_get_gauge(pp_gauge_t *g){
 #endif
 }
 
+/* ----------------------- persistent calibration store -------------------- *
+ * Calibration data (touch cal, RX power cal) must survive reboots, but the
+ * rootfs is a RAM disk. S21ppdata mounts the SD data partition (/dev/mmcblk0p2)
+ * at /data on boot when present. pp_cal_dir() returns /data/cal there, else
+ * falls back to /tmp (dev host / web sim / no data partition) so everything
+ * still runs — just non-persistently. pp_cal_path() builds a full path. */
+static const char *pp_cal_dir(void){
+    static char d[64]; static int done=0;
+    if(done) return d;
+    done=1;
+    struct stat st;
+    if(stat("/data",&st)==0 && S_ISDIR(st.st_mode)){
+        mkdir("/data/cal",0755);
+        if(access("/data/cal",W_OK)==0){ snprintf(d,sizeof d,"/data/cal"); return d; }
+    }
+    snprintf(d,sizeof d,"/tmp");
+    return d;
+}
+static const char *pp_cal_path(const char *name){       /* NB: single static buffer */
+    static char p[96]; snprintf(p,sizeof p,"%s/%s",pp_cal_dir(),name); return p;
+}
+
 /* ------------------------- touch calibration ----------------------------- *
  * The Pico delivers touch coordinates already rotated to the display
  * orientation; the TOUCH CAL app (pp-touchcal) fits an affine raw->pixel
- * transform from crosshair taps and writes the 6 coefficients to the file
- * below. Any app that maps a touch to a screen position calls pp_touch_map();
- * with no cal file it falls back to a plain 12-bit->screen linear scale so
- * touch is still usable. The file lives in tmpfs so it clears on reboot
- * (re-run TOUCH CAL after a power cycle). */
-#define PP_TOUCHCAL_PATH "/tmp/pp_touchcal"
+ * transform from crosshair taps and writes the 6 coefficients to
+ * <pp_cal_dir>/touchcal. Any app that maps a touch to a screen position calls
+ * pp_touch_map(); with no cal file it falls back to a plain 12-bit->screen
+ * linear scale so touch is still usable. Persisted on the data partition, so it
+ * survives reboots (with a legacy /tmp path read as a fallback). */
+#define PP_TOUCHCAL_NAME   "touchcal"
+#define PP_TOUCHCAL_LEGACY "/tmp/pp_touchcal"
 static float pp_tcal[6];
 static int   pp_tcal_ok = 0, pp_tcal_tried = 0;
 static void pp_touch_load(void){
     pp_tcal_tried = 1; pp_tcal_ok = 0;
-    FILE *f = fopen(PP_TOUCHCAL_PATH, "r"); if(!f) return;
+    FILE *f = fopen(pp_cal_path(PP_TOUCHCAL_NAME), "r");
+    if(!f) f = fopen(PP_TOUCHCAL_LEGACY, "r");         /* pre-partition fallback */
+    if(!f) return;
     float a[6]; int n = 0;
     for(; n < 6; n++) if(fscanf(f, "%f", &a[n]) != 1) break;
     fclose(f);

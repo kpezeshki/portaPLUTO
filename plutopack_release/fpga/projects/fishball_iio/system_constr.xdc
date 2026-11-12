@@ -68,15 +68,15 @@ set_property  -dict {PACKAGE_PIN  N15  IOSTANDARD LVCMOS25} [get_ports pl_spi_mi
 set_property  -dict {PACKAGE_PIN  N16  IOSTANDARD LVCMOS25} [get_ports pl_spi_mosi]
 
 # --- PlutoSky display (CH320QV15A-T, PS SPI1/EMIO) + MCU EMIO GPIO ---
-# Bank 13 @ 3.3V (LVCMOS33) - display SPI data bus, direct to the 3.3V panel.
-# Ball assignments per board schematic (confirmed 2026-07-25 vs xc7z020clg400 device DB).
+# V1.1 front-end: LCD_RS is serial SCL (J1.11), LCD_WR is D/CX (J1.13).
+# Bank 13 @ 3.3V (LVCMOS33) - direct display signals.
 set_property  -dict {PACKAGE_PIN  U9   IOSTANDARD LVCMOS33} [get_ports disp_sdi]       ;# IO_L17P_T2_13      -> display SDI (MOSI)
 set_property  -dict {PACKAGE_PIN  V10  IOSTANDARD LVCMOS33} [get_ports disp_sdo]       ;# IO_L21N_T3_DQS_13  <- display SDO (MISO)
-set_property  -dict {PACKAGE_PIN  T9   IOSTANDARD LVCMOS33} [get_ports disp_scl]       ;# IO_L12P_T1_MRCC_13 -> display LCD_WR (SCLK)
-set_property  -dict {PACKAGE_PIN  U10  IOSTANDARD LVCMOS33} [get_ports disp_csn]       ;# IO_L12N_T1_MRCC_13 -> display LCD_RD (CS)
-# --- D/C + MCU bus — BANK 35, LVCMOS25 (matches the working AD9361 bank; ---
+set_property  -dict {PACKAGE_PIN  U10  IOSTANDARD LVCMOS33} [get_ports disp_scl]       ;# IO_L12N_T1_MRCC_13 -> J1.11 LCD_RS (SCL)
+set_property  -dict {PACKAGE_PIN  T9   IOSTANDARD LVCMOS33} [get_ports disp_rs]        ;# IO_L12P_T1_MRCC_13 -> J1.13 LCD_WR (D/CX)
+# --- LCD_RD idle-high + MCU bus — BANK 35, LVCMOS25 (matches the working AD9361 bank; ---
 # --- level-shifted off-chip to the Pico/panel). Balls per board schematic. ---
-set_property  -dict {PACKAGE_PIN  G19  IOSTANDARD LVCMOS25} [get_ports disp_rs]        ;# IO_L18P_T2_AD13P_35     -> display LCD_RS (D/C)
+set_property  -dict {PACKAGE_PIN  G19  IOSTANDARD LVCMOS25} [get_ports disp_csn]       ;# IO_L18P_T2_AD13P_35     -> J1.4 via U7 B1, LCD_RD (idle high)
 set_property  -dict {PACKAGE_PIN  G20  IOSTANDARD LVCMOS25} [get_ports {mcu_io[0]}]    ;# IO_L18N_T2_AD13N_35     <-> Pico GPIO22 (spare)
 set_property  -dict {PACKAGE_PIN  J18  IOSTANDARD LVCMOS25} [get_ports {mcu_io[1]}]    ;# IO_L14P_T2_AD4P_SRCC_35 <-> Pico GPIO21 (spare)
 set_property  -dict {PACKAGE_PIN  H18  IOSTANDARD LVCMOS25} [get_ports {mcu_io[2]}]    ;# IO_L14N_T2_AD4N_SRCC_35 <-> Pico GPIO20 (INT)

@@ -11,6 +11,8 @@ config BR2_PACKAGE_PLUTOPACK_PANEL
 	    pp-sdr           "Waterfall": maia-sdr waterfall + LO tuner
 	    pp-tonegen       AD9361 CW tone generator (TX, via DDS)
 	    pp-spectrum      swept FFT spectrum analyzer (maia + LO sweep)
+	    pp-rxpowercal    RX absolute-power calibration (guided 4-axis sweep)
+	    pp-powermeter    calibrated power meter (needs a valid rxpower.cal)
 	    pp-status/pp-probe/pp-fbnoise/pp-fbrebind  headless debug tools
 	    disp_speed       swap devicetree to test 250k/1/2/5/10 MHz display SPI
 	  See /usr/share/plutopack/README on target.

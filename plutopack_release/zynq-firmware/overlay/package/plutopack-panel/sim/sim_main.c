@@ -44,6 +44,8 @@ extern int pp_manual_main(int, char**);
 extern int pp_term_main(int, char**);
 extern int pp_rficstat_main(int, char**);
 extern int pp_touchcal_main(int, char**);
+extern int pp_powermeter_main(int, char**);
+extern int pp_rxpowercal_main(int, char**);
 
 /* ------------------------------ shared state ------------------------------- */
 static pthread_mutex_t lk = PTHREAD_MUTEX_INITIALIZER;
@@ -97,6 +99,8 @@ int sim_run_app(const char *path, const char *spidev, const char *fbdev){
     if(strstr(path,"pp-term"))     return pp_term_main(3, argv);
     if(strstr(path,"pp-rficstat")) return pp_rficstat_main(3, argv);
     if(strstr(path,"pp-touchcal")) return pp_touchcal_main(3, argv);
+    if(strstr(path,"pp-powermeter")) return pp_powermeter_main(3, argv);
+    if(strstr(path,"pp-rxpowercal")) return pp_rxpowercal_main(3, argv);
     if(strstr(path,"pp-tetris"))   return pp_tetris_main(3, argv);
     if(strstr(path,"pp-acks"))     return pp_acks_main(3, argv);
     if(strstr(path,"pp-test"))     return pp_test_main(3, argv);

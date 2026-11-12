@@ -572,10 +572,11 @@
 };
 
 /* --- PlutoSky front-panel display + MCU interface (PS SPI1/EMIO) --- */
-/* Display CH320QV15A-T (ILI9341-class) over 4-wire SPI:
- *   SDI=MOSI, SDO=MISO, LCD_WR=SCLK, LCD_RD=CS, LCD_RS=D/C (EMIO GPIO).
+/* V1.1 display CH320QV15A-T (ILI9341-class) over 4-wire SPI:
+ *   SDI=MOSI, SDO=MISO, LCD_RS=SCLK, LCD_WR=D/C (EMIO GPIO).
+ *   LCD_RD/RDX is held high by the FPGA; Pico GPIO1 owns panel CS.
  * EMIO GPIO bit N maps to PS gpio0 line (54+N):
- *   bit 18 -> line 72  = LCD_RS (D/C)
+ *   bit 18 -> line 72  = LCD_WR / WR_RS (D/C)
  *   bits 19..25 -> lines 73..79 = MCU[0..6] (use via libgpiod / userspace).
  * NOTE: controller assumed ILI9341-class (fbtft fb_ili9341). If the
  * CH320QV15A-T uses a different controller, change `compatible` (e.g. to
@@ -595,16 +596,12 @@
 		 * confirmed on hardware 2026-07-28). 0/180 via MADCTL are free;
 		 * 90/270 cost a software rotate in fbtft's write path (fine at 250kHz). */
 		compatible = "ilitek,ili9341";
-		/* ENABLED: the boot hang was the phantom axi_uartlite (now disabled),
-		 * NOT the panel/spi-gpio — see DISPLAY_BRINGUP_LEARNINGS.md.
-		 * Display SPI requested at 60 MHz. NOTE: the Zynq PS (Cadence) SPI only
-		 * divides its ref clock by 4/8/16..., so the driver clamps this to the
-		 * highest achievable <=60 MHz (~41.7 or 50 MHz depending on SPI_REF_CLK).
-		 * `disp_speed <hz>` rewrites this in the deployed DTB at runtime to dial
-		 * it back if the panel glitches at speed. */
+		/* The V1.1 board routes the serial clock directly to the 3.3 V header.
+		 * Start at a conservative 5 MHz; disp_speed can select another rate
+		 * after a panel test on assembled hardware. */
 		status = "okay";
 		reg = <0>;
-		spi-max-frequency = <60000000>;
+		spi-max-frequency = <5000000>;
 		buswidth = <8>;
 		dc-gpios = <&gpio0 72 GPIO_ACTIVE_HIGH>;
 		rotate = <270>;

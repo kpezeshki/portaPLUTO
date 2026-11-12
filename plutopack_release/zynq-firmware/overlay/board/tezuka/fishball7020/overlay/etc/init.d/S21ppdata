@@ -1,0 +1,39 @@
+#!/bin/sh
+# Mount the PlutoPack persistent data partition (SD /dev/mmcblk0p2) at /data.
+#
+# The rootfs is a RAM disk, so calibration data (touch cal, RX power cal) is
+# kept on a dedicated second SD partition. Create it once on the host when you
+# prepare the card (see docs/BUILD_SD_IMAGE.md): a FAT32 partition after the
+# boot partition. This script only MOUNTS it — it never formats, so it can
+# never destroy user data. If p2 is absent, the apps fall back to /tmp
+# (non-persistent) and keep working.
+
+DATA_DEV="/dev/mmcblk0p2"
+DATA_DIR="/data"
+
+start() {
+    [ -e "$DATA_DEV" ] || { echo "PlutoPack data: no $DATA_DEV (cal will be non-persistent)"; return 0; }
+    printf "Mounting PlutoPack data (%s -> %s): " "$DATA_DEV" "$DATA_DIR"
+    mkdir -p "$DATA_DIR"
+    # vfat matches the boot partition (no extra kernel fs / userspace tools);
+    # 'auto' lets it also mount ext2/3/4 if you formatted it that way.
+    if mount "$DATA_DEV" "$DATA_DIR" 2>/dev/null; then
+        mkdir -p "$DATA_DIR/cal"
+        echo "OK"
+    else
+        echo "FAIL (unformatted? cal will be non-persistent)"
+        rmdir "$DATA_DIR" 2>/dev/null
+    fi
+}
+
+stop() {
+    mountpoint -q "$DATA_DIR" 2>/dev/null && umount "$DATA_DIR"
+}
+
+case "$1" in
+    start)   start ;;
+    stop)    stop ;;
+    restart) stop; start ;;
+    *)       echo "Usage: $0 {start|stop|restart}"; exit 1 ;;
+esac
+exit $?

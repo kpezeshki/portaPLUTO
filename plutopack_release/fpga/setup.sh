@@ -33,6 +33,22 @@ if [ -d "${UPSTREAM_DIR}/maia-hdl/adi-hdl/.git" ] || [ -f "${UPSTREAM_DIR}/maia-
         || echo "WARN: could not pin adi-hdl to ${ADI_HDL_COMMIT}; using submodule default"
 fi
 
+# The pinned ADI project helper resets ip_repo_paths before it opens the block
+# design. Register the generated Maia IP there, while Vivado can still update
+# its catalog; the later attempt in pluto/system_bd.tcl is too late in 2025.2.
+python3 - "${UPSTREAM_DIR}/maia-hdl/adi-hdl/projects/scripts/adi_project_xilinx.tcl" <<'PY'
+from pathlib import Path
+import sys
+p = Path(sys.argv[1])
+s = p.read_text()
+needle = '  set_property ip_repo_paths $lib_dirs [current_fileset]\n  update_ip_catalog'
+fixed = '  lappend lib_dirs [file normalize "../../ip"]\n' + needle
+if fixed not in s:
+    if s.count(needle) != 1:
+        raise SystemExit("Cannot locate pinned ADI IP catalog setup")
+    p.write_text(s.replace(needle, fixed))
+PY
+
 echo "== Overlaying PlutoPack FPGA project sources =="
 for P in fishball7020_iio fishball_iio; do
     dst="${UPSTREAM_DIR}/maia-hdl/projects/${P}"

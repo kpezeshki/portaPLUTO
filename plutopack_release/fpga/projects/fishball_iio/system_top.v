@@ -96,9 +96,9 @@ module system_top (
   // PlutoSky display (CH320QV15A-T, PS SPI1/EMIO) + MCU EMIO GPIO
   output          disp_sdi,    // SPI MOSI  -> display SDI
   input           disp_sdo,    // SPI MISO  <- display SDO
-  output          disp_scl,    // SPI SCLK  -> display LCD_WR
-  output          disp_csn,    // SPI CS    -> display LCD_RD
-  output          disp_rs,     // D/C (GPIO)-> display LCD_RS (level-shifted 1.8V)
+  output          disp_scl,    // SPI SCLK  -> v1.1 display LCD_RS (J1.11)
+  output          disp_csn,    // LCD_RD/RDX -> v1.1 U7 B1 (J1.4), idle high
+  output          disp_rs,     // D/C (GPIO)-> v1.1 display LCD_WR (J1.13)
   inout   [ 6:0]  mcu_io       // MCU interface (EMIO GPIO)
 );
 
@@ -115,8 +115,9 @@ module system_top (
 
   // instantiations
 
-  // LCD_RS (D/C) is output-only; loop back its read value
+  // V1.1 LCD_WR is the serial D/C line; loop back its read value.
   assign disp_rs = disp_mcu_gpio_o[0];
+  assign disp_csn = 1'b1; // LCD_RD/RDX is unused in four-wire SPI mode
   assign disp_mcu_gpio_i[0] = disp_mcu_gpio_o[0];
 
   // MCU lines: 7 bidirectional EMIO GPIO
@@ -186,9 +187,9 @@ module system_top (
     .spi0_sdo_i (1'b0),
     .spi0_sdo_o (spi_mosi),
 
-    .spi1_clk_i (1'b0),
+    .spi1_clk_i (disp_scl),
     .spi1_clk_o (disp_scl),
-    .spi1_csn_0_o (disp_csn),
+    .spi1_csn_0_o (),
     .spi1_csn_i (1'b1),
     .spi1_sdi_i (disp_sdo),
     .spi1_sdo_i (1'b0),

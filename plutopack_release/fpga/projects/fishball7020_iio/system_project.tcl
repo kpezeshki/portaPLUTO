@@ -3,11 +3,6 @@ source $ad_hdl_dir/projects/scripts/adi_project_xilinx.tcl
 source $ad_hdl_dir/projects/scripts/adi_board.tcl
 
 set p_device "xc7z020clg400-1"
-# Vivado 2025.x fix: register the IP repos (incl. the generated maia_sdr IP in
-# ../../ip) before adi_project opens the block design. Consumed by the guarded
-# block in adi-hdl/projects/scripts/adi_project_xilinx.tcl. Paths mirror the
-# set already done in ../pluto/system_bd.tcl.
-set ::ad_project_ip_repo_paths {../../antsdr-hdl ../../ip ../../adi-hdl/library}
 adi_project fishball
 
 adi_project_files fishball [list \
